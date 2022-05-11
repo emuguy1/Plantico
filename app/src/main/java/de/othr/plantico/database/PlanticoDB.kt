@@ -30,6 +30,9 @@ public abstract class PlanticoDB: RoomDatabase() {
 
         suspend fun populateDatabase(plantDAO: PlantDAO) {
             plantDAO.insert(Plant(0, "Cactus"))
+            plantDAO.insert(Plant(0, "Monstera"))
+            plantDAO.insert(Plant(0, "Aloe Vera"))
+
         }
     }
 

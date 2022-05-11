@@ -2,7 +2,7 @@
 <resources>
 
     <!--Light Theme -->
-    <color name="primary">#006E2B</color>
+    <color name="primary">#6A8E4E</color>
     <color name="onPrimary">#FFFFFF</color>
     <color name="primaryContainer">#76FD93</color>
     <color name="onPrimaryContainer">#002107</color>

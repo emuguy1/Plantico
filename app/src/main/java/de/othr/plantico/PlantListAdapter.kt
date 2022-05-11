@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -28,15 +29,16 @@ class PlantListAdapter: ListAdapter<Plant, PlantListAdapter.PlantViewHolder>(Pla
 
     inner class PlantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         private val plantItemView: TextView = itemView.findViewById(R.id.plantTextView)
+        private val plantCard: CardView = itemView.findViewById(R.id.card)
 
         fun bind(text: String?) {
             plantItemView.text = text
-            plantItemView.setOnClickListener(this)
+            plantCard.setOnClickListener(this)
         }
 
         override fun onClick(p0: View?) {
             if(p0 != null) {
-                if(p0.id == R.id.plantTextView) {
+                if(p0.id == R.id.card) {
                 val context = p0.context
                 val intent = Intent(context, PlantActivity::class.java).putExtra(SELECTED_PLANT, currentList[layoutPosition].id)
                 context.startActivity(intent)

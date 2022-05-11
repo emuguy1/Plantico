@@ -47,7 +47,7 @@ public abstract class PlanticoDB: RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     PlanticoDB::class.java,
-                    "word_database"
+                    "plantico_database"
                 )
                     .addCallback(PlantDatabaseCallback(scope))
                     .build()

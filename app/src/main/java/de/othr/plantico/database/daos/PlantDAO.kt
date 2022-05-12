@@ -14,6 +14,7 @@ interface PlantDAO {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(plant: Plant)
+
     @Query("DELETE FROM Plant")
     suspend fun deleteAll()
 }

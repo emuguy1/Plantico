@@ -15,5 +15,4 @@ class Repository(private val plantDAO: PlantDAO) {
     }
 
 
-
 }

@@ -22,17 +22,19 @@ class PlantActivity : AppCompatActivity() {
         plantHeader = findViewById(R.id.plant_detail_header)
         testViewModel.allPlants.observe(this) { plants ->
             // Update the cached copy of the words in the adapter.
-            plants.let { plantList.clear()
-                        plantList.addAll(it)
-                val plant = plantList.find { plant ->  plant.id == plantID}
+            plants.let {
+                plantList.clear()
+                plantList.addAll(it)
+                val plant = plantList.find { plant -> plant.id == plantID }
                 if (plant != null) {
                     plantHeader.text = plant.plantName
-                }}
+                }
+            }
         }
         //testViewModel.
         //plantHeader.setText("lol")
-        val bundle = savedInstanceState?:intent.extras
-        if(bundle != null) {
+        val bundle = savedInstanceState ?: intent.extras
+        if (bundle != null) {
             plantID = bundle.getInt(SELECTED_PLANT)
 
 

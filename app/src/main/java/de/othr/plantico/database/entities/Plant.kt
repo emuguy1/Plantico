@@ -8,5 +8,4 @@ import androidx.room.PrimaryKey
 data class Plant(
     @PrimaryKey(autoGenerate = true) val id: Int,
     val plantName: String
-) {
-}
+)

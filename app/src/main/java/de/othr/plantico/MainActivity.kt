@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     private val testViewModel: TestViewModel by viewModels {
         TestViewModelFactory((application as PlantApplication).repository)
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,7 +26,4 @@ class MainActivity : AppCompatActivity() {
             plants.let { adapter.submitList(it) }
         }
     }
-
-
-
 }

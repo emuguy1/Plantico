@@ -13,7 +13,7 @@ class TestViewModel(private val repository: Repository) : ViewModel() {
      * Launching a new coroutine to insert the data in a non-blocking way
      */
     fun insert(plant: Plant) = viewModelScope.launch {
-        repository.insert(plant);
+        repository.insert(plant)
     }
 }
 

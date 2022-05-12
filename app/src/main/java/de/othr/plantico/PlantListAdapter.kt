@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import de.othr.plantico.PlantActivity.Companion.SELECTED_PLANT
 import de.othr.plantico.database.entities.Plant
 
-class PlantListAdapter: ListAdapter<Plant, PlantListAdapter.PlantViewHolder>(PlantsComparator()) {
+class PlantListAdapter : ListAdapter<Plant, PlantListAdapter.PlantViewHolder>(PlantsComparator()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlantViewHolder {
         val view: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.plant_item, parent, false)
@@ -26,8 +26,8 @@ class PlantListAdapter: ListAdapter<Plant, PlantListAdapter.PlantViewHolder>(Pla
     }
 
 
-
-    inner class PlantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    inner class PlantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
         private val plantItemView: TextView = itemView.findViewById(R.id.plantTextView)
         private val plantCard: CardView = itemView.findViewById(R.id.card)
 
@@ -37,12 +37,16 @@ class PlantListAdapter: ListAdapter<Plant, PlantListAdapter.PlantViewHolder>(Pla
         }
 
         override fun onClick(p0: View?) {
-            if(p0 != null) {
-                if(p0.id == R.id.card) {
-                val context = p0.context
-                val intent = Intent(context, PlantActivity::class.java).putExtra(SELECTED_PLANT, currentList[layoutPosition].id)
-                context.startActivity(intent)
-            }}
+            if (p0 != null) {
+                if (p0.id == R.id.card) {
+                    val context = p0.context
+                    val intent = Intent(context, PlantActivity::class.java).putExtra(
+                        SELECTED_PLANT,
+                        currentList[layoutPosition].id
+                    )
+                    context.startActivity(intent)
+                }
+            }
         }
     }
 

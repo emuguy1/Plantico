@@ -11,12 +11,17 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import de.othr.plantico.PlantActivity.Companion.SELECTED_PLANT
 import de.othr.plantico.database.entities.Plant
+import de.othr.plantico.databinding.PlantItemBinding
 
 class PlantListAdapter : ListAdapter<Plant, PlantListAdapter.PlantViewHolder>(PlantsComparator()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlantViewHolder {
-        val view: View = LayoutInflater.from(parent.context)
-            .inflate(R.layout.plant_item, parent, false)
-        return PlantViewHolder(view)
+        val binding = PlantItemBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+
+        return PlantViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: PlantViewHolder, position: Int) {
@@ -26,14 +31,16 @@ class PlantListAdapter : ListAdapter<Plant, PlantListAdapter.PlantViewHolder>(Pl
     }
 
 
-    inner class PlantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+    inner class PlantViewHolder(binding: PlantItemBinding) :
+        RecyclerView.ViewHolder(
+            binding.root
+        ),
         View.OnClickListener {
-        private val plantItemView: TextView = itemView.findViewById(R.id.plantTextView)
-        private val plantCard: CardView = itemView.findViewById(R.id.card)
+        private val itemBinding = binding
 
         fun bind(text: String?) {
-            plantItemView.text = text
-            plantCard.setOnClickListener(this)
+            itemBinding.plantTextView.text = text
+            itemBinding.card.setOnClickListener(this)
         }
 
         override fun onClick(p0: View?) {

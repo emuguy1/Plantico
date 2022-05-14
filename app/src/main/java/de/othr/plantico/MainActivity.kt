@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
         val adapter = PlantListAdapter()
         binding.recyclerview.adapter = adapter
         binding.recyclerview.layoutManager = LinearLayoutManager(this)

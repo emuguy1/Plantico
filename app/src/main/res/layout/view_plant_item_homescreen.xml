@@ -17,7 +17,7 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/card"
+                android:id="@+id/plant_card"
                 android:layout_width="match_parent"
                 android:layout_height="115dp"
                 android:layout_margin="15dp"
@@ -189,8 +189,8 @@
                 android:elevation="20dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/cactus_image"
-                app:layout_constraintBottom_toBottomOf="@+id/card"
-                app:layout_constraintLeft_toLeftOf="@+id/card"
+                app:layout_constraintBottom_toBottomOf="@+id/plant_card"
+                app:layout_constraintLeft_toLeftOf="@+id/plant_card"
                 app:layout_constraintTop_toTopOf="parent"
 
 

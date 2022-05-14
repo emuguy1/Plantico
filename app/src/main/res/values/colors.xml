@@ -4,20 +4,12 @@
     <!--Light Theme -->
     <color name="primary">#6A8E4E</color>
     <color name="onPrimary">#FFFFFF</color>
-    <color name="primaryContainer">#76FD93</color>
-    <color name="onPrimaryContainer">#002107</color>
-    <color name="secondary">#516351</color>
+    <color name="secondary">#B0D182</color>
     <color name="onSecondary">#FFFFFF</color>
-    <color name="secondaryContainer">#D4E8D1</color>
-    <color name="onSecondaryContainer">#0F1F11</color>
     <color name="tertiary">#3A656D</color>
     <color name="onTertiary">#FFFFFF</color>
-    <color name="tertiaryContainer">#BDEAF3</color>
-    <color name="onTertiaryContainer">#001F24</color>
     <color name="error">#BA1B1B</color>
-    <color name="errorContainer">#FFDAD4</color>
     <color name="onError">#FFFFFF</color>
-    <color name="onErrorContainer">#410001</color>
     <color name="background">#FCFDF7</color>
     <color name="onBackground">#1A1C19</color>
     <color name="surface">#FCFDF7</color>
@@ -25,35 +17,25 @@
     <color name="surfaceVariant">#DEE5DA</color>
     <color name="onSurfaceVariant">#414940</color>
     <color name="outline">#727970</color>
-    <color name="inverseOnSurface">#F0F1EB</color>
-    <color name="inverseSurface">#2F312E</color>
-    <color name="inversePrimary">#57E079</color>
     <color name="shadow">#000000</color>
-    <color name="primaryInverse">#57E079</color>
 
     <!--Other Colors -->
+    <color name="dark_green">#2C473E</color>
+    <color name="grey">#837F7F</color>
     <color name="light_grey">#A8A8A8</color>
     <color name="dark_grey">#5C5C5C</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
     <!--Dark Theme -->
-    <color name="dark_primary">#57E079</color>
-    <color name="dark_onPrimary">#003912</color>
-    <color name="dark_primaryContainer">#00531E</color>
-    <color name="dark_onPrimaryContainer">#76FD93</color>
-    <color name="dark_secondary">#B7CCB5</color>
+    <color name="dark_primary">#6A8E4E</color>
+    <color name="dark_onPrimary">#000000</color>
+    <color name="dark_secondary">#B0D182</color>
     <color name="dark_onSecondary">#243425</color>
-    <color name="dark_secondaryContainer">#394B3A</color>
-    <color name="dark_onSecondaryContainer">#D4E8D1</color>
     <color name="dark_tertiary">#A1CED7</color>
     <color name="dark_onTertiary">#00363D</color>
-    <color name="dark_tertiaryContainer">#1F4D54</color>
-    <color name="dark_onTertiaryContainer">#BDEAF3</color>
     <color name="dark_error">#FFB4A9</color>
     <color name="dark_errorContainer">#930006</color>
-    <color name="dark_onError">#680003</color>
-    <color name="dark_onErrorContainer">#FFDAD4</color>
     <color name="dark_background">#1A1C19</color>
     <color name="dark_onBackground">#E1E3DD</color>
     <color name="dark_surface">#1A1C19</color>
@@ -61,9 +43,5 @@
     <color name="dark_surfaceVariant">#414940</color>
     <color name="dark_onSurfaceVariant">#C1C9BE</color>
     <color name="dark_outline">#8B9389</color>
-    <color name="dark_inverseOnSurface">#1A1C19</color>
-    <color name="dark_inverseSurface">#E1E3DD</color>
-    <color name="dark_inversePrimary">#006E2B</color>
     <color name="dark_shadow">#000000</color>
-    <color name="dark_primaryInverse">#006E2B</color>
 </resources>

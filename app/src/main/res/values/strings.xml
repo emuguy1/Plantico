@@ -19,4 +19,5 @@
     <string name="plant_genus_header">Genus:</string>
     <string name="plant_subfamily_header">Subfamily:</string>
     <string name="plant_family_header">Family:</string>
+    <string name="view_all"><u>View All</u></string>
 </resources>

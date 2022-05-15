@@ -1,37 +1,36 @@
-package de.othr.plantico
+package de.othr.plantico.ui.homescreen
 
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import de.othr.plantico.PlantActivity.Companion.SELECTED_PLANT
+import de.othr.plantico.R
 import de.othr.plantico.database.entities.Plant
-import de.othr.plantico.databinding.PlantItemBinding
+import de.othr.plantico.databinding.ViewWateringItemBinding
+import de.othr.plantico.ui.PlantActivity
 
-class PlantListAdapter : ListAdapter<Plant, PlantListAdapter.PlantViewHolder>(PlantsComparator()) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlantViewHolder {
-        val binding = PlantItemBinding.inflate(
+class WateringAdapter : ListAdapter<Plant, WateringAdapter.WateringViewHolder>(PlantsComparator()) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WateringViewHolder {
+        val binding = ViewWateringItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         )
 
-        return PlantViewHolder(binding)
+        return WateringViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: PlantViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: WateringViewHolder, position: Int) {
         val current = getItem(position)
         holder.bind(current.plantName)
 
     }
 
 
-    inner class PlantViewHolder(binding: PlantItemBinding) :
+    inner class WateringViewHolder(binding: ViewWateringItemBinding) :
         RecyclerView.ViewHolder(
             binding.root
         ),
@@ -39,8 +38,8 @@ class PlantListAdapter : ListAdapter<Plant, PlantListAdapter.PlantViewHolder>(Pl
         private val itemBinding = binding
 
         fun bind(text: String?) {
-            itemBinding.plantTextView.text = text
-            itemBinding.card.setOnClickListener(this)
+            itemBinding.wateringPlantText.text= text
+            itemBinding.wateringCard.setOnClickListener(this)
         }
 
         override fun onClick(p0: View?) {
@@ -48,7 +47,7 @@ class PlantListAdapter : ListAdapter<Plant, PlantListAdapter.PlantViewHolder>(Pl
                 if (p0.id == R.id.card) {
                     val context = p0.context
                     val intent = Intent(context, PlantActivity::class.java).putExtra(
-                        SELECTED_PLANT,
+                        PlantActivity.SELECTED_PLANT,
                         currentList[layoutPosition].id
                     )
                     context.startActivity(intent)

@@ -15,4 +15,13 @@
     <string name="title_notifications">Notifications</string>
     <string name="add_plant">Add a plant!</string>
     <string name="title_activity_plant">PlantActivity</string>
+    <string name="plant_difficulty_header">Difficulty:</string>
+    <string name="plant_genus_header">Genus:</string>
+    <string name="plant_subfamily_header">Subfamily:</string>
+    <string name="plant_family_header">Family:</string>
+    <string name="view_all"><u>View All</u></string>
+    <string name="homescreen_upcomming_waterings">Upcoming Waterings</string>
+    <string name="homescreen_last_visited_plants">Last visited plants</string>
+    <string name="homescreen_to_see_something_add_some_plants">To see something, add some plants.</string>
+    <string name="homescreen_search_no_data">To see something, search for some plants in the Searchtab.</string>
 </resources>

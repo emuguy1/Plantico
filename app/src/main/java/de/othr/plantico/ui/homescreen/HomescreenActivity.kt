@@ -1,6 +1,7 @@
 package de.othr.plantico.ui.homescreen
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,6 +40,12 @@ class HomescreenActivity: AppCompatActivity() {
             plants.let {
                 adapter.submitList(it)
                 wateringPlantAdapter.submitList(it)
+                if(it.isNotEmpty()){
+                    binding.recyclerviewLastVisitedPlants.visibility= View.VISIBLE
+                    binding.recyclerviewUpcomingWatering.visibility= View.VISIBLE
+                    binding.noDataSearch.visibility= View.GONE
+                    binding.noDataWatering.visibility= View.GONE
+                }
             }
         }
     }

@@ -20,4 +20,6 @@
     <string name="plant_subfamily_header">Subfamily:</string>
     <string name="plant_family_header">Family:</string>
     <string name="view_all"><u>View All</u></string>
+    <string name="homescreen_upcomming_waterings">Upcoming Waterings</string>
+    <string name="homescreen_last_visited_plants">Last visited plants</string>
 </resources>

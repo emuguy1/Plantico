@@ -10,11 +10,23 @@
         android:id="@+id/toolbar_homescreen"
         android:background="@color/primary"
         app:titleTextColor="@color/white"
-        android:textAlignment="center"
+        android:gravity="center"
+        style="@style/Theme.Design.NoActionBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_plantico_text"/>
+
+
+    </androidx.appcompat.widget.Toolbar>
 
     <TextView
         android:id="@+id/last_visited_plants_text"
@@ -25,7 +37,7 @@
         android:textStyle="bold"
         android:textSize="15sp"
         android:textColor="@color/grey"
-        android:text="Last visited plants"
+        android:text="@string/homescreen_last_visited_plants"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_homescreen"
         />
@@ -64,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginBottom="15dp"
-        android:text="Last visited plants"
+        android:text="@string/homescreen_upcomming_waterings"
         android:textColor="@color/grey"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -88,11 +100,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_upcoming_watering"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
         android:orientation="horizontal"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -101,7 +113,7 @@
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="83dp"
-        android:text="menubar"
+        android:text="menu"
         app:layout_constraintBottom_toBottomOf="parent"
         />
 

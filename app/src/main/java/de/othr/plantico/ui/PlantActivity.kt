@@ -1,9 +1,10 @@
-package de.othr.plantico
+package de.othr.plantico.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.asFlow
+import de.othr.plantico.TestViewModel
+import de.othr.plantico.TestViewModelFactory
 import de.othr.plantico.database.PlantApplication
 import de.othr.plantico.database.entities.Plant
 import de.othr.plantico.databinding.ActivityPlantBinding

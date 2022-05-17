@@ -22,4 +22,13 @@
     <style name="Theme.Plantico.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Plantico.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <!-- Query Text Color -->
+        <item name="android:textColorPrimary">@color/primary</item>
+        <!-- Hint Color -->
+        <item name="android:textColorHint">@color/grey</item>
+        <!-- Icon Color -->
+        <item name="android:tint">@color/primary</item>
+    </style>
 </resources>

@@ -8,5 +8,5 @@ class PlantApplication : Application() {
     val applicationScope = CoroutineScope(SupervisorJob())
 
     val database by lazy { PlanticoDB.getDatabase(this, applicationScope) }
-    val repository by lazy { Repository(database.plantDAO()) }
+    val repository by lazy { Repository(database.plantDAO(), database.ownedPlantDAO()) }
 }

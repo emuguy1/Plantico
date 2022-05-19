@@ -6,11 +6,26 @@
         <entry key="..\:/programmierte programme/githubworkspace/Plantico/app/src/main/res/layout/activity_main.xml" value="0.16893115942028986" />
         <entry key="..\:/programmierte programme/githubworkspace/Plantico/app/src/main/res/layout/activity_plant.xml" value="0.16893115942028986" />
         <entry key="..\:/programmierte programme/githubworkspace/Plantico/app/src/main/res/layout/plant_item.xml" value="0.16893115942028986" />
+        <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.2745" />
+        <entry key="app/src/main/res/drawable/ic_home_icon.xml" value="0.2745" />
+        <entry key="app/src/main/res/drawable/ic_icon_name.xml" value="0.2745" />
+        <entry key="app/src/main/res/drawable/ic_icon_small.xml" value="0.2745" />
+        <entry key="app/src/main/res/drawable/ic_leaf_big_icon.xml" value="0.2745" />
+        <entry key="app/src/main/res/drawable/ic_leaf_icon.xml" value="0.2745" />
+        <entry key="app/src/main/res/drawable/ic_waterdroplett_full_icon.xml" value="0.2745" />
+        <entry key="app/src/main/res/drawable/ic_waterdropplett_empty_icon.xml" value="0.2745" />
+        <entry key="app/src/main/res/layout/activity_homescreen.xml" value="0.26979166666666665" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_plant.xml" value="0.26979166666666665" />
+        <entry key="app/src/main/res/layout/plant_item.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/view_plant_item_homescreen.xml" value="0.26979166666666665" />
+        <entry key="app/src/main/res/layout/view_watering_item.xml" value="0.26979166666666665" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/menu_main.xml" value="0.26979166666666665" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

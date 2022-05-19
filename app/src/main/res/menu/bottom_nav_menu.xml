@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home"/>
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_icon"
+        android:title="@string/Home"
+        app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard"/>
+        android:id="@+id/action_plant"
+        android:enabled="true"
+        android:icon="@drawable/ic_plant_icon"
+        android:title="@string/Plants"
+        app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications"/>
+        android:id="@+id/action_search"
+        android:enabled="true"
+        android:icon="@drawable/ic_search_icon"
+        android:title="@string/Search"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_user"
+        android:enabled="true"
+        android:icon="@drawable/ic_user_icon"
+        android:title="@string/Users"
+        app:showAsAction="ifRoom"/>
 
 </menu>

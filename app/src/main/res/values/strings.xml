@@ -24,4 +24,7 @@
     <string name="homescreen_last_visited_plants">Last visited plants</string>
     <string name="homescreen_to_see_something_add_some_plants">To see something, add some plants.</string>
     <string name="homescreen_search_no_data">To see something, search for some plants in the Searchtab.</string>
+    <string name="search_hint">Search plants</string>
+    <string name="results_found">%d results found</string>
+    <string name="no_results_found">No results found for your query.</string>
 </resources>

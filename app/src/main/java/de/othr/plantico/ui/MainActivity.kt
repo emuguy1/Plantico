@@ -10,6 +10,7 @@ import de.othr.plantico.TestViewModelFactory
 import de.othr.plantico.database.PlantApplication
 import de.othr.plantico.databinding.ActivityMainBinding
 import de.othr.plantico.ui.homescreen.HomescreenActivity
+import de.othr.plantico.ui.search.SearchableActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -34,6 +35,10 @@ class MainActivity : AppCompatActivity() {
         }
         binding.button2.setOnClickListener {
             val intent = Intent(this, HomescreenActivity::class.java)
+            startActivity(intent)
+        }
+        binding.button3.setOnClickListener {
+            val intent = Intent(this, SearchableActivity::class.java)
             startActivity(intent)
         }
     }

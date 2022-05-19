@@ -15,6 +15,7 @@ import de.othr.plantico.TestViewModelFactory
 import de.othr.plantico.database.PlantApplication
 import de.othr.plantico.databinding.ActivityMainBinding
 import de.othr.plantico.ui.homescreen.HomescreenActivity
+import de.othr.plantico.ui.search.SearchableActivity
 
 class MainActivity : AppCompatActivity() {
 

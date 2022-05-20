@@ -1,5 +1,6 @@
 package de.othr.plantico.ui.search
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ListAdapter
@@ -13,6 +14,8 @@ import de.othr.plantico.TestViewModelFactory
 import de.othr.plantico.database.PlantApplication
 import de.othr.plantico.database.entities.Plant
 import de.othr.plantico.databinding.ActivitySearchBinding
+import de.othr.plantico.ui.PlantActivity
+import de.othr.plantico.ui.homescreen.HomescreenActivity
 import de.othr.plantico.ui.homescreen.PlantAdapter
 
 class SearchableActivity: AppCompatActivity() {
@@ -73,6 +76,40 @@ class SearchableActivity: AppCompatActivity() {
                 return false
             }
         })
+
+
+        binding.bottomNavigation.selectedItemId = R.id.action_search
+
+        binding.bottomNavigation.setOnItemSelectedListener{ menu ->
+
+            when (menu.itemId) {
+
+                R.id.action_home -> {
+                    val intent = Intent(this, HomescreenActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+
+                R.id.action_plant -> {
+                    val intent = Intent(this, PlantActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+
+                R.id.action_search -> {
+                    val intent = Intent(this, SearchableActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+
+                R.id.action_user -> {
+
+                    true
+                }
+
+                else -> false
+            }
+        }
     }
 
     //TODO: Maybe change this to Filtering in database instead of accessing all plants?

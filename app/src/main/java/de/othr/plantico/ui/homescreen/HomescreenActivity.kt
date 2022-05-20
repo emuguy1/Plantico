@@ -11,9 +11,8 @@ import de.othr.plantico.TestViewModel
 import de.othr.plantico.TestViewModelFactory
 import de.othr.plantico.database.PlantApplication
 import de.othr.plantico.databinding.ActivityHomescreenBinding
-import de.othr.plantico.ui.MainActivity
 import de.othr.plantico.ui.PlantActivity
-import de.othr.plantico.ui.PlantListAdapter
+import de.othr.plantico.ui.search.SearchableActivity
 
 
 class HomescreenActivity: AppCompatActivity() {
@@ -71,7 +70,7 @@ class HomescreenActivity: AppCompatActivity() {
                 }
 
                 R.id.action_search -> {
-                    val intent = Intent(this, MainActivity::class.java)
+                    val intent = Intent(this, SearchableActivity::class.java)
                     startActivity(intent)
                     true
                 }

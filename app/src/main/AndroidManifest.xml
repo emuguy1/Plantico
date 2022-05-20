@@ -17,17 +17,11 @@
             android:theme="@style/Theme.Plantico.NoActionBar" />
         <activity
             android:name=".ui.homescreen.HomescreenActivity"
-            android:exported="false"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Plantico.NoActionBar"/>
-        <activity
-            android:name=".ui.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Plantico.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

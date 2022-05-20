@@ -4,17 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   >
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        tools:listitem="@layout/plant_item"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_homescreen"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation" />
+    tools:context=".ui.PlantActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_homescreen"
@@ -37,6 +27,20 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+    <TextView
+        android:id="@+id/last_visited_plants_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Living Room"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="@color/grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_homescreen"
+        />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
@@ -48,8 +52,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerview"
         app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/bottom_nav_menu" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

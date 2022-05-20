@@ -34,7 +34,7 @@ class PlantActivity : AppCompatActivity() {
                 plantList.addAll(it)
                 val plant = plantList.find { plant -> plant.id == plantID }
                 if (plant != null) {
-                    //binding.plantDetailHeader.text = plant.plantName
+                    binding.plantDetailHeader.text = plant.plantName
                 }
             }
         }

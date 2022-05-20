@@ -44,7 +44,7 @@ class WateringAdapter : ListAdapter<Plant, WateringAdapter.WateringViewHolder>(P
 
         override fun onClick(p0: View?) {
             if (p0 != null) {
-                if (p0.id == R.id.card) {
+                if (p0.id == R.id.watering_card) {
                     val context = p0.context
                     val intent = Intent(context, PlantActivity::class.java).putExtra(
                         PlantActivity.SELECTED_PLANT,

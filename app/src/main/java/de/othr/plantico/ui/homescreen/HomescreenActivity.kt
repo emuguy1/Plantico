@@ -51,8 +51,11 @@ class HomescreenActivity: AppCompatActivity() {
                 }
             }
         }
-        binding.bottomNavigation.selectedItemId = R.id.action_home
 
+        setupMenuBinding()
+    }
+    fun setupMenuBinding(){
+        binding.bottomNavigation.selectedItemId = R.id.action_home
         binding.bottomNavigation.setOnItemSelectedListener{ menu ->
 
             when (menu.itemId) {
@@ -84,5 +87,4 @@ class HomescreenActivity: AppCompatActivity() {
             }
         }
     }
-
 }

@@ -42,7 +42,7 @@
                 android:layout_width="13dp"
                 android:layout_height="20dp"
                 android:layout_marginStart="15dp"
-                android:src="@drawable/ic_waterdroplett_full_icon"
+                android:src="@drawable/ic_waterdropplett_full_icon"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/watering_medium" />
 

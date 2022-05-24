@@ -43,7 +43,15 @@ enum class PlantCategory {
     DURABLE,
     FLOWERING,
     WINTER,
-    ANNUAL
+    ANNUAL,
+    BIG_LEAFS,
+    SMALL_LEAFS,
+    EVERGREEN,
+    TROPICAL,
+    SEMI_TROPICAL,
+    ARID,
+    //means not Frost safe
+    NON_HARDY
 }
 
 enum class WateringLevel {

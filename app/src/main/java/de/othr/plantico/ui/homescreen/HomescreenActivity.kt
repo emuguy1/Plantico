@@ -33,7 +33,7 @@ class HomescreenActivity: AppCompatActivity() {
         setSupportActionBar(mActionBarToolbar)
 
         val adapter = PlantAdapter()
-        val wateringPlantAdapter = WateringAdapter()
+        val wateringPlantAdapter = WateringAdapter(this)
         binding.recyclerviewLastVisitedPlants.adapter = adapter
         binding.recyclerviewLastVisitedPlants.layoutManager = LinearLayoutManager(this)
         binding.recyclerviewUpcomingWatering.adapter = wateringPlantAdapter
@@ -42,11 +42,19 @@ class HomescreenActivity: AppCompatActivity() {
             // Update the cached copy of the words in the adapter.
             plants.let {
                 adapter.submitList(it)
-                wateringPlantAdapter.submitList(it)
                 if(it.isNotEmpty()){
                     binding.recyclerviewLastVisitedPlants.visibility= View.VISIBLE
-                    binding.recyclerviewUpcomingWatering.visibility= View.VISIBLE
                     binding.noDataSearch.visibility= View.GONE
+                }
+            }
+        }
+
+        testViewModel.allOwnedPlants.observe(this) { plants ->
+            // Update the cached copy of the words in the adapter.
+            plants.let {
+                wateringPlantAdapter.submitList(it)
+                if(it.isNotEmpty()){
+                    binding.recyclerviewUpcomingWatering.visibility= View.VISIBLE
                     binding.noDataWatering.visibility= View.GONE
                 }
             }

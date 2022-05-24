@@ -177,7 +177,7 @@ abstract class PlanticoDB : RoomDatabase() {
             )
             plantDAO.insert(
                 Plant(
-                    "Sawfly orchid",
+                    "Sawfly Orchid",
                     "Ophrys tenthredinifera",
                     "Orchidaceae",
                     "Orchidoideae",

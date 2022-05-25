@@ -3,6 +3,7 @@ package de.othr.plantico
 import de.othr.plantico.ui.homescreen.addDays
 import de.othr.plantico.ui.homescreen.toPlanticoString
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import java.time.Instant
 import java.util.*
@@ -13,6 +14,7 @@ internal class DateExtensionTest {
     private val twentyfifthMay: Date = Date.from(Instant.ofEpochSecond(1653480886))
 
     @Test
+    @DisplayName("Test the Date Extension for PlanticoDateString")
     fun toPlanticoString() {
         val expected = "24th May"
         val actual = twentyfourthMay.toPlanticoString()
@@ -20,6 +22,7 @@ internal class DateExtensionTest {
     }
 
     @Test
+    @DisplayName("Test the Date Extension for adding int Days")
     fun addDays(){
         val expected = twentyfifthMay
         val actual = twentyfourthMay.addDays(1)

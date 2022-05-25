@@ -4,7 +4,6 @@ import de.othr.plantico.database.entities.Plant
 import de.othr.plantico.database.entities.PlantCategory
 import de.othr.plantico.database.entities.PlantDifficulty
 import de.othr.plantico.database.entities.WateringLevel
-import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
@@ -21,10 +20,6 @@ internal class SearchViewModelTest {
         searchViewModel = SearchViewModel()
         testPlantList =
             listOf(createPlant("Aloe Vera"), createPlant("Cactus"), createPlant("Monstera"))
-    }
-
-    @AfterEach
-    fun tearDown() {
     }
 
     private fun createPlant(plantName: String): Plant {

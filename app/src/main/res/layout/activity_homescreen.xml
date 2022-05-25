@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/background">
+    tools:context=".ui.homescreen.HomescreenActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_homescreen"
@@ -23,7 +23,8 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_plantico_text"/>
+            android:src="@drawable/ic_plantico_text"
+            android:contentDescription="@string/plantico_app_logo" />
 
 
     </androidx.appcompat.widget.Toolbar>

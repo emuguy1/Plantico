@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import de.othr.plantico.R
 import de.othr.plantico.database.entities.Plant
+import de.othr.plantico.database.entities.PlantDifficulty
 import de.othr.plantico.databinding.PlantItemBinding
 import de.othr.plantico.databinding.ViewPlantItemHomescreenBinding
 import de.othr.plantico.ui.PlantActivity
@@ -27,7 +28,7 @@ class PlantAdapter : ListAdapter<Plant, PlantAdapter.PlantHistoryViewHolder>(Pla
 
     override fun onBindViewHolder(holder: PlantHistoryViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.plantName)
+        holder.bind(current)
 
     }
 
@@ -39,8 +40,23 @@ class PlantAdapter : ListAdapter<Plant, PlantAdapter.PlantHistoryViewHolder>(Pla
         View.OnClickListener {
         private val itemBinding = binding
 
-        fun bind(text: String?) {
-            itemBinding.plantTitleText.text = text
+        fun bind(plant: Plant) {
+            //reset item to Default
+            itemBinding.plantDifficultyMedium.visibility = View.GONE
+            itemBinding.plantDifficultyHard.visibility = View.GONE
+
+            itemBinding.plantTitleText.text = plant.plantName
+            itemBinding.plantFamilyText.text = plant.family
+            itemBinding.plantSubfamilyText.text = plant.subfamily
+            itemBinding.plantGenusText.text = plant.genus
+            //1 equals PlantDifficulty.INTERMEDIATE
+            if(plant.difficulty.ordinal >= 1){
+                itemBinding.plantDifficultyMedium.visibility = View.VISIBLE
+            }
+            //2 equals PlantDifficulty.ADVANCED
+            if(plant.difficulty.ordinal >= 2){
+                itemBinding.plantDifficultyHard.visibility = View.VISIBLE
+            }
             itemBinding.plantCard.setOnClickListener(this)
         }
 

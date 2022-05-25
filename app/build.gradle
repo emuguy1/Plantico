@@ -30,6 +30,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
     buildFeatures {
         viewBinding true
     }
@@ -70,4 +75,9 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.9.0'
 
 
+}
+
+task testAll(dependsOn: ['test', 'connectedAndroidTest']) {
+    group = 'custom_tasks'
+    description = "Run all tests"
 }

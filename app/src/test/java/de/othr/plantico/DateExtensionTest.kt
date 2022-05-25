@@ -1,7 +1,7 @@
 package de.othr.plantico
 
-import de.othr.plantico.ui.homescreen.addDays
-import de.othr.plantico.ui.homescreen.toPlanticoString
+import de.othr.plantico.toPlanticoString
+import de.othr.plantico.addDays
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test

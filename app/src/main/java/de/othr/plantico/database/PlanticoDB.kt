@@ -9,7 +9,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import de.othr.plantico.database.daos.OwnedPlantDAO
 import de.othr.plantico.database.daos.PlantDAO
 import de.othr.plantico.database.entities.*
-import de.othr.plantico.ui.homescreen.nowUTC
+import de.othr.plantico.nowUTC
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import java.util.*

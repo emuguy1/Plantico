@@ -14,7 +14,8 @@ import de.othr.plantico.database.entities.OwnedPlant
 import de.othr.plantico.databinding.ViewWateringItemBinding
 import de.othr.plantico.ui.PlantActivity
 import java.text.SimpleDateFormat
-import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneOffset
 import java.util.*
 
 class WateringAdapter(context: Context) : ListAdapter<OwnedPlant, WateringAdapter.WateringViewHolder>(OwnedPlantsComparator()) {
@@ -52,19 +53,15 @@ class WateringAdapter(context: Context) : ListAdapter<OwnedPlant, WateringAdapte
             //TODO: Get Watering Level from Plant
             //TODO: Should already be eliminated in the query
             if (plant.lastWatered != null){
-                var dt = Date()
-                val c: Calendar = Calendar.getInstance()
-                c.setTime(plant.lastWatered)
-                if(plant.customWateringCycle != null){
-                    c.add(Calendar.DATE, plant.customWateringCycle)
+                var wateringDate = plant.lastWatered
+                wateringDate = if(plant.customWateringCycle != null){
+                     wateringDate.addDays(plant.customWateringCycle)
                 }
                 //TODO: Get Watering cycle from the plant type
                 else{
-                    c.add(Calendar.DATE, 1)
+                    wateringDate.addDays(1)
                 }
-                dt = c.getTime()
-                itemBinding.wateringDateText.text = dt.toPlanticoString()
-                //val n = plant.lastWatered.toInstant().plus(1, ChronoUnit.DAYS)
+                itemBinding.wateringDateText.text = wateringDate.toPlanticoString()
             }
             itemBinding.wateringCard.setOnClickListener(this)
         }
@@ -106,5 +103,17 @@ fun Date.toPlanticoString():String{
     val day = c[Calendar.DAY_OF_MONTH]
     val month_name = SimpleDateFormat("MMMM", Locale.ENGLISH).format(c.getTime())
     return ""+day + suffixes[day] + " " + month_name
+
+}
+
+fun Date.addDays(days: Int):Date{
+    val c: Calendar = Calendar.getInstance()
+    c.time = this
+    c.add(Calendar.DATE, days)
+    return c.time
+}
+
+fun Date.nowUTC():Date{
+    return Date.from(LocalDateTime.now().toInstant(ZoneOffset.UTC))
 
 }

@@ -1,7 +1,6 @@
 package de.othr.plantico.database
 
 import android.content.Context
-import android.os.Build
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -10,10 +9,9 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import de.othr.plantico.database.daos.OwnedPlantDAO
 import de.othr.plantico.database.daos.PlantDAO
 import de.othr.plantico.database.entities.*
+import de.othr.plantico.ui.homescreen.nowUTC
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import java.time.LocalDateTime
-import java.time.ZoneOffset
 import java.util.*
 
 @Database(entities = arrayOf(Plant::class, OwnedPlant::class), version = 1, exportSchema = false)
@@ -203,18 +201,39 @@ abstract class PlanticoDB : RoomDatabase() {
                     WateringLevel.LOW
                 )
             )
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                ownedPlantDAO.insertOwnedPlant(
-                    OwnedPlant(
-                        "My first cactus!",
-                        1,
-                        Date.from(LocalDateTime.now().toInstant(ZoneOffset.UTC)),
-                        null,
-                        null,
-                        null
-                    )
+
+            //Would have to be removed before publication
+            ownedPlantDAO.insertOwnedPlant(
+                OwnedPlant(
+                    "My first cactus!",
+                    1,
+                    Date().nowUTC(),
+                    null,
+                    null,
+                    null
                 )
-            }
+            )
+
+            ownedPlantDAO.insertOwnedPlant(
+                OwnedPlant(
+                    "Monsti Monstera",
+                    2,
+                    Date().nowUTC(),
+                    Date().nowUTC(),
+                    7,
+                    "living room"
+                )
+            )
+            ownedPlantDAO.insertOwnedPlant(
+                OwnedPlant(
+                    "Mahaloa",
+                    3,
+                    Date().nowUTC(),
+                    Date().nowUTC(),
+                    16,
+                    "living room"
+                )
+            )
         }
     }
 

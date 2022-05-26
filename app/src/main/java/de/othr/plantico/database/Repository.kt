@@ -23,5 +23,29 @@ class Repository(private val plantDAO: PlantDAO, private val ownedPlantDAO: Owne
         ownedPlantDAO.insertOwnedPlant(plant)
     }
 
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun deleteOwnedPlantByID(ownedPlantID: Int) {
+        ownedPlantDAO.deleteOwnedPlantByID(ownedPlantID)
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun updateOwnedPlant(ownedPlant: OwnedPlant) {
+        ownedPlantDAO.updateOwnedPlant(ownedPlant)
+    }
+
+    fun getPlantByID(plantID: Int): Plant {
+        return plantDAO.getPlantByID(plantID)
+    }
+
+    fun getOwnedPlantByID(ownedPlantID: Int): OwnedPlant {
+        return ownedPlantDAO.getOwnedPlantByID(ownedPlantID)
+    }
+
+    fun getAllOwnedPlantByPlantID(plantID: Int): Flow<List<OwnedPlant>> {
+        return ownedPlantDAO.getAllByPlantID(plantID)
+    }
+
 
 }

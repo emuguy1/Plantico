@@ -1,11 +1,11 @@
 package de.othr.plantico.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import de.othr.plantico.PlantViewModel
 import de.othr.plantico.R
-import de.othr.plantico.TestViewModel
 import de.othr.plantico.TestViewModelFactory
 import de.othr.plantico.database.PlantApplication
 import de.othr.plantico.database.entities.Plant
@@ -14,7 +14,7 @@ import de.othr.plantico.ui.homescreen.HomescreenActivity
 import de.othr.plantico.ui.search.SearchableActivity
 
 class PlantActivity : AppCompatActivity() {
-    private val testViewModel: TestViewModel by viewModels {
+    private val plantViewModel: PlantViewModel by viewModels {
         TestViewModelFactory((application as PlantApplication).repository)
     }
     private val plantList = ArrayList<Plant>()
@@ -27,7 +27,7 @@ class PlantActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        testViewModel.allPlants.observe(this) { plants ->
+        plantViewModel.allPlants.observe(this) { plants ->
             // Update the cached copy of the words in the adapter.
             plants.let {
                 plantList.clear()
@@ -47,7 +47,7 @@ class PlantActivity : AppCompatActivity() {
         }
         binding.bottomNavigation.selectedItemId = R.id.action_plant
 
-        binding.bottomNavigation.setOnItemSelectedListener{ menu ->
+        binding.bottomNavigation.setOnItemSelectedListener { menu ->
 
             when (menu.itemId) {
 

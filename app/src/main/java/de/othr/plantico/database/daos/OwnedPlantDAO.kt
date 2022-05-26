@@ -1,15 +1,12 @@
 package de.othr.plantico.database.daos
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import de.othr.plantico.database.entities.OwnedPlant
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface OwnedPlantDAO {
-    @Query("SELECT * FROM ownedplant ORDER BY id")
+    @Query("SELECT * FROM OwnedPlant ORDER BY id")
     fun getAllOwnedPlants(): Flow<List<OwnedPlant>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
@@ -17,4 +14,28 @@ interface OwnedPlantDAO {
 
     @Query("DELETE FROM OwnedPlant")
     suspend fun deleteAll()
+
+    @Query("SELECT * FROM OwnedPlant WHERE id=:ownedPlantID")
+    fun getOwnedPlantByID(ownedPlantID: Int): OwnedPlant
+
+    @Query("DELETE FROM OwnedPlant WHERE id=:ownedPlantID")
+    suspend fun deleteOwnedPlantByID(ownedPlantID: Int)
+
+    @Query("SELECT * FROM OwnedPlant WHERE plantID=:plantID ORDER BY id")
+    fun getAllByPlantID(plantID: Int): Flow<List<OwnedPlant>>
+
+    @Update
+    suspend fun updateOwnedPlant(ownedPlant: OwnedPlant)
+
+    /*
+    TODO
+    @Query("SELECT * FROM OwnedPlant ORDER BY lastWatered + :plantCycle * 86400000")
+    fun getAllOrderedByNextWatering(plantCycle: Int): Flow<List<OwnedPlant>>
+
+    @Query("SELECT * FROM OwnedPlant ORDER BY lastWatered + customWateringCycle * 86400000")
+    fun getAllOrderedByNextCustomWatering(): Flow<List<OwnedPlant>>
+
+     */
+
+
 }

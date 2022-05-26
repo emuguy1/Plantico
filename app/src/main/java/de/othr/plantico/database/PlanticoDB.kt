@@ -11,6 +11,7 @@ import de.othr.plantico.database.daos.PlantDAO
 import de.othr.plantico.database.entities.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import java.util.*
 
 @Database(entities = arrayOf(Plant::class, OwnedPlant::class), version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
@@ -108,9 +109,9 @@ abstract class PlanticoDB : RoomDatabase() {
                 OwnedPlant(
                     "My first cactus!",
                     1,
+                    Date(),
                     null,
-                    null,
-                    null,
+                    30,
                     null
                 )
             )

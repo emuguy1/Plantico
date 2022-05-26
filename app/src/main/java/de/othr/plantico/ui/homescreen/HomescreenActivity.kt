@@ -6,8 +6,8 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import de.othr.plantico.PlantViewModel
 import de.othr.plantico.R
-import de.othr.plantico.TestViewModel
 import de.othr.plantico.TestViewModelFactory
 import de.othr.plantico.database.PlantApplication
 import de.othr.plantico.databinding.ActivityHomescreenBinding
@@ -15,10 +15,10 @@ import de.othr.plantico.ui.PlantActivity
 import de.othr.plantico.ui.search.SearchableActivity
 
 
-class HomescreenActivity: AppCompatActivity() {
+class HomescreenActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomescreenBinding
-    private val testViewModel: TestViewModel by viewModels {
+    private val plantViewModel: PlantViewModel by viewModels {
         TestViewModelFactory((application as PlantApplication).repository)
     }
 
@@ -28,8 +28,8 @@ class HomescreenActivity: AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val mActionBarToolbar= binding.toolbarHomescreen
-        mActionBarToolbar.title=""
+        val mActionBarToolbar = binding.toolbarHomescreen
+        mActionBarToolbar.title = ""
         setSupportActionBar(mActionBarToolbar)
 
         val adapter = PlantAdapter()
@@ -37,23 +37,24 @@ class HomescreenActivity: AppCompatActivity() {
         binding.recyclerviewLastVisitedPlants.adapter = adapter
         binding.recyclerviewLastVisitedPlants.layoutManager = LinearLayoutManager(this)
         binding.recyclerviewUpcomingWatering.adapter = wateringPlantAdapter
-        binding.recyclerviewUpcomingWatering.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
-        testViewModel.allPlants.observe(this) { plants ->
+        binding.recyclerviewUpcomingWatering.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        plantViewModel.allPlants.observe(this) { plants ->
             // Update the cached copy of the words in the adapter.
             plants.let {
                 adapter.submitList(it)
                 wateringPlantAdapter.submitList(it)
-                if(it.isNotEmpty()){
-                    binding.recyclerviewLastVisitedPlants.visibility= View.VISIBLE
-                    binding.recyclerviewUpcomingWatering.visibility= View.VISIBLE
-                    binding.noDataSearch.visibility= View.GONE
-                    binding.noDataWatering.visibility= View.GONE
+                if (it.isNotEmpty()) {
+                    binding.recyclerviewLastVisitedPlants.visibility = View.VISIBLE
+                    binding.recyclerviewUpcomingWatering.visibility = View.VISIBLE
+                    binding.noDataSearch.visibility = View.GONE
+                    binding.noDataWatering.visibility = View.GONE
                 }
             }
         }
         binding.bottomNavigation.selectedItemId = R.id.action_home
 
-        binding.bottomNavigation.setOnItemSelectedListener{ menu ->
+        binding.bottomNavigation.setOnItemSelectedListener { menu ->
 
             when (menu.itemId) {
 

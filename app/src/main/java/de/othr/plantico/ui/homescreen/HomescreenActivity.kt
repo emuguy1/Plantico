@@ -32,6 +32,7 @@ class HomescreenActivity : AppCompatActivity() {
         mActionBarToolbar.title = ""
         setSupportActionBar(mActionBarToolbar)
 
+
         val adapter = PlantAdapter()
         val wateringPlantAdapter = WateringAdapter(this)
         binding.recyclerviewLastVisitedPlants.adapter = adapter
@@ -43,9 +44,9 @@ class HomescreenActivity : AppCompatActivity() {
             // Update the cached copy of the words in the adapter.
             plants.let {
                 adapter.submitList(it)
-                if(it.isNotEmpty()){
-                    binding.recyclerviewLastVisitedPlants.visibility= View.VISIBLE
-                    binding.noDataSearch.visibility= View.GONE
+                if (it.isNotEmpty()) {
+                    binding.recyclerviewLastVisitedPlants.visibility = View.VISIBLE
+                    binding.noDataSearch.visibility = View.GONE
                 }
             }
         }
@@ -54,18 +55,19 @@ class HomescreenActivity : AppCompatActivity() {
             // Update the cached copy of the words in the adapter.
             plants.let {
                 wateringPlantAdapter.submitList(it)
-                if(it.isNotEmpty()){
-                    binding.recyclerviewUpcomingWatering.visibility= View.VISIBLE
-                    binding.noDataWatering.visibility= View.GONE
+                if (it.isNotEmpty()) {
+                    binding.recyclerviewUpcomingWatering.visibility = View.VISIBLE
+                    binding.noDataWatering.visibility = View.GONE
                 }
             }
         }
 
         setupMenuBinding()
     }
-    fun setupMenuBinding(){
+
+    fun setupMenuBinding() {
         binding.bottomNavigation.selectedItemId = R.id.action_home
-        binding.bottomNavigation.setOnItemSelectedListener{ menu ->
+        binding.bottomNavigation.setOnItemSelectedListener { menu ->
 
             when (menu.itemId) {
 

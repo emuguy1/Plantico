@@ -17,4 +17,7 @@ interface PlantDAO {
 
     @Query("DELETE FROM Plant")
     suspend fun deleteAll()
+
+    @Query("SELECT * FROM plant WHERE id=:plantID")
+    fun getPlantByID(plantID: Int): Plant
 }

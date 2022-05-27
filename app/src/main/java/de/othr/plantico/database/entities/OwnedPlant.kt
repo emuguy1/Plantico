@@ -19,9 +19,9 @@ import java.util.*
 data class OwnedPlant(
     val plantName: String,
     val plantID: Int,
-    val lastWatered: Date?,
+    val lastWatered: Date,
     val birthday: Date?,
-    val customWateringCycle: Int?,
+    var customWateringCycle: Int,
     val location: String?
 ) {
     @PrimaryKey(autoGenerate = true)

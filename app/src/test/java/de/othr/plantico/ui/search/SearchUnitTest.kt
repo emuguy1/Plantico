@@ -10,7 +10,7 @@ import org.junit.Before
 import org.junit.Test
 
 
-internal class PlantViewModelTest {
+internal class SearchUnitTest {
 
     lateinit var testPlantList: List<Plant>
 

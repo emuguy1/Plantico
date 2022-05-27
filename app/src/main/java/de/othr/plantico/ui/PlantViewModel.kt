@@ -20,9 +20,31 @@ class PlantViewModel(private val repository: Repository) : ViewModel() {
     fun insertOwnedPlant(plant: OwnedPlant) = viewModelScope.launch {
         repository.insertOwnedPlant(plant)
     }
+
+    fun deleteOwnedPlantByID(ownedPlantID: Int) = viewModelScope.launch {
+        repository.deleteOwnedPlantByID(ownedPlantID)
+    }
+
+    fun updateOwnedPlant(ownedPlant: OwnedPlant) = viewModelScope.launch {
+        repository.updateOwnedPlant(ownedPlant)
+    }
+
+
+    fun getPlantByID(plantID: Int): Plant {
+        return repository.getPlantByID(plantID)
+    }
+
+    fun getOwnedPlantByID(ownedPlantID: Int): OwnedPlant {
+        return repository.getOwnedPlantByID(ownedPlantID)
+    }
+
+    fun getAllOwnedPlantByPlantID(plantID: Int): LiveData<List<OwnedPlant>> {
+        return repository.getAllOwnedPlantByPlantID(plantID).asLiveData()
+    }
+
 }
 
-class TestViewModelFactory(private val repository: Repository) : ViewModelProvider.Factory {
+class PlantViewModelFactory(private val repository: Repository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(PlantViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")

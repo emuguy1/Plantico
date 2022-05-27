@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import de.othr.plantico.PlantViewModel
+import de.othr.plantico.PlantViewModelFactory
 import de.othr.plantico.R
-import de.othr.plantico.TestViewModelFactory
 import de.othr.plantico.database.PlantApplication
 import de.othr.plantico.database.entities.Plant
 import de.othr.plantico.databinding.ActivityPlantBinding
@@ -15,7 +15,7 @@ import de.othr.plantico.ui.search.SearchableActivity
 
 class PlantActivity : AppCompatActivity() {
     private val plantViewModel: PlantViewModel by viewModels {
-        TestViewModelFactory((application as PlantApplication).repository)
+        PlantViewModelFactory((application as PlantApplication).repository)
     }
     private val plantList = ArrayList<Plant>()
     private var plantID = 0

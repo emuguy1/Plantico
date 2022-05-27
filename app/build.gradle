@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "de.othr.plantico"
-        minSdk 21
+        minSdk 26
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -40,7 +40,6 @@ android {
     namespace 'de.othr.plantico'
 }
 
-
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -51,6 +50,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    testImplementation 'junit:junit:4.13.2'
     implementation 'androidx.test:core-ktx:1.4.0'
     implementation 'androidx.test.ext:junit-ktx:1.1.3'
     testImplementation 'junit:junit:4.13.2'

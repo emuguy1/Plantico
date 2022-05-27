@@ -21,7 +21,6 @@ import de.othr.plantico.ui.homescreen.PlantAdapter
 class SearchableActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivitySearchBinding
-    var searchViewModel: SearchViewModel = SearchViewModel()
     private val testViewModel: TestViewModel by viewModels {
         TestViewModelFactory((application as PlantApplication).repository)
     }
@@ -57,7 +56,7 @@ class SearchableActivity: AppCompatActivity() {
         // Register Listener
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                val results = searchViewModel.searchForPlantsInList(allPlants, query)
+                val results = TestViewModel.searchForPlantsInList(allPlants, query)
                 if(results.isEmpty()) {
                     binding.recyclerviewSearchedPlants.visibility= View.GONE
                     binding.noResultsFound.visibility= View.VISIBLE
@@ -69,7 +68,7 @@ class SearchableActivity: AppCompatActivity() {
                 return false
             }
             override fun onQueryTextChange(newText: String): Boolean {
-                val results = searchViewModel.searchForPlantsInList(allPlants, newText)
+                val results = TestViewModel.searchForPlantsInList(allPlants, newText)
                 adapter.submitList(
                     results
                 )

@@ -1,5 +1,6 @@
 package de.othr.plantico.ui.search
 
+import de.othr.plantico.TestViewModel
 import de.othr.plantico.database.entities.Plant
 import de.othr.plantico.database.entities.PlantCategory
 import de.othr.plantico.database.entities.PlantDifficulty
@@ -9,14 +10,12 @@ import org.junit.Before
 import org.junit.Test
 
 
-internal class SearchViewModelTest {
+internal class PlantViewModelTest {
 
-    lateinit var searchViewModel: SearchViewModel
     lateinit var testPlantList: List<Plant>
 
     @Before
     fun setUp() {
-        searchViewModel = SearchViewModel()
         testPlantList =
             listOf(createPlant("Aloe Vera"), createPlant("Cactus"), createPlant("Monstera"))
     }
@@ -42,15 +41,15 @@ internal class SearchViewModelTest {
     @Test
     fun searchForPlantsInList() {
         // Test search with full name of a plant
-        assertEquals(1, searchViewModel.searchForPlantsInList(testPlantList, "Cactus").size)
+        assertEquals(1, TestViewModel.searchForPlantsInList(testPlantList, "Cactus").size)
 
         // Test search with small Case
-        assertEquals(1, searchViewModel.searchForPlantsInList(testPlantList, "cactus").size)
+        assertEquals(1, TestViewModel.searchForPlantsInList(testPlantList, "cactus").size)
 
         // Test search with some characters of multiple plants
-        assertEquals(2, searchViewModel.searchForPlantsInList(testPlantList, "era").size)
+        assertEquals(2, TestViewModel.searchForPlantsInList(testPlantList, "era").size)
 
         // Test search with no results
-        assertEquals(0, searchViewModel.searchForPlantsInList(testPlantList, "abcde").size)
+        assertEquals(10, TestViewModel.searchForPlantsInList(testPlantList, "abcde").size)
     }
 }

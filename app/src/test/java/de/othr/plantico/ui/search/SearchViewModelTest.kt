@@ -4,10 +4,9 @@ import de.othr.plantico.database.entities.Plant
 import de.othr.plantico.database.entities.PlantCategory
 import de.othr.plantico.database.entities.PlantDifficulty
 import de.othr.plantico.database.entities.WateringLevel
-import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.DisplayName
-import org.junit.jupiter.api.Test
+import org.junit.Assert.*
+import org.junit.Before
+import org.junit.Test
 
 
 internal class SearchViewModelTest {
@@ -15,7 +14,7 @@ internal class SearchViewModelTest {
     lateinit var searchViewModel: SearchViewModel
     lateinit var testPlantList: List<Plant>
 
-    @BeforeEach
+    @Before
     fun setUp() {
         searchViewModel = SearchViewModel()
         testPlantList =
@@ -41,7 +40,6 @@ internal class SearchViewModelTest {
     }
 
     @Test
-    @DisplayName("Test the search functionality for plants in one list")
     fun searchForPlantsInList() {
         // Test search with full name of a plant
         assertEquals(1, searchViewModel.searchForPlantsInList(testPlantList, "Cactus").size)

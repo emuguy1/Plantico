@@ -5,10 +5,7 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import de.othr.plantico.database.daos.OwnedPlantDAO
 import de.othr.plantico.database.daos.PlantDAO
-import de.othr.plantico.database.entities.Plant
-import de.othr.plantico.database.entities.PlantCategory
-import de.othr.plantico.database.entities.PlantDifficulty
-import de.othr.plantico.database.entities.WateringLevel
+import de.othr.plantico.database.entities.*
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -17,6 +14,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import java.io.IOException
+import java.util.*
 
 @RunWith(RobolectricTestRunner::class)
 class PlanticoDBTest {
@@ -68,9 +66,32 @@ class PlanticoDBTest {
         plantDAO.insert(plant)
         val plants = plantDAO.getAllPlants()
         assert(plants.first().contains(plant))
+        val ownedPlant = OwnedPlant(
+            "My first cactus!",
+            1,
+            Date(),
+            null,
+            30,
+            null
+        )
 
+        ownedPlantDAO.insertOwnedPlant(ownedPlant)
+
+        val ownedPlants = ownedPlantDAO.getAllOwnedPlants()
+        assert(ownedPlants.first().contains(ownedPlant))
+
+        val ownedPlantUpdate = ownedPlants.first().first()
+
+        ownedPlantUpdate.customWateringCycle = 10
+
+        ownedPlantDAO.updateOwnedPlant(ownedPlantUpdate)
+
+        assert(ownedPlants.first().first().customWateringCycle == 10)
+
+        ownedPlantDAO.deleteOwnedPlantByID(ownedPlantUpdate.id)
+
+        assert(!ownedPlants.first().contains(ownedPlant))
 
     }
-
-
+    
 }

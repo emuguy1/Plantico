@@ -21,7 +21,7 @@ data class OwnedPlant(
     val plantID: Int,
     val lastWatered: Date,
     val birthday: Date?,
-    val customWateringCycle: Int,
+    var customWateringCycle: Int,
     val location: String?
 ) {
     @PrimaryKey(autoGenerate = true)

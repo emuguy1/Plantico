@@ -50,6 +50,6 @@ internal class SearchUnitTest {
         assertEquals(2, TestViewModel.searchForPlantsInList(testPlantList, "era").size)
 
         // Test search with no results
-        assertEquals(10, TestViewModel.searchForPlantsInList(testPlantList, "abcde").size)
+        assertEquals(0, TestViewModel.searchForPlantsInList(testPlantList, "abcde").size)
     }
 }

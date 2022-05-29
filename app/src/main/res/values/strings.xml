@@ -38,7 +38,7 @@
     <string name="plant_watering_header">Watering level:</string>
     <string name="plant_watering_cycle_header">Watering cycle:</string>
     <string name="plant_general_description">General Description:</string>
-    <string name="plant_propagations_instructions">Propagations Instructions:</string>
+    <string name="plant_propagation_instructions">Propagation Instructions:</string>
     <string name="plant_watering_instructions">Watering Instructions:</string>
     <string name="plant_difficulty">Difficulty:</string>
     <string name="add_plant_button_text">Add Plant</string>

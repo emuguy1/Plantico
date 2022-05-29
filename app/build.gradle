@@ -74,6 +74,8 @@ dependencies {
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android"
 
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
+
     implementation 'com.google.code.gson:gson:2.9.0'
 
     testImplementation 'org.robolectric:robolectric:4.7.3'

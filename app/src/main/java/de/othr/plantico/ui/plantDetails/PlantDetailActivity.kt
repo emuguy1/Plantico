@@ -78,12 +78,12 @@ class PlantDetailActivity : AppCompatActivity() {
                         plantWateringInstructionsText.text = plant!!.wateringDesc
                         //Difficulty
                         //1 equals PlantDifficulty.INTERMEDIATE
-                        if (plant!!.difficulty.ordinal >= 1) {
-                            plantDifficultyMedium.visibility = View.VISIBLE
+                        if (plant!!.difficulty.ordinal < 1) {
+                            plantDifficultyMedium.visibility = View.INVISIBLE
                         }
                         //2 equals PlantDifficulty.ADVANCED
-                        if (plant!!.difficulty.ordinal >= 2) {
-                            plantDifficultyHard.visibility = View.VISIBLE
+                        if (plant!!.difficulty.ordinal < 2) {
+                            plantDifficultyHard.visibility = View.INVISIBLE
                         }
                         //Watering
                         if (plant!!.wateringLevel.ordinal < 2) {

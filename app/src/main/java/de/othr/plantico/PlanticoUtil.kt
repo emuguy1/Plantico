@@ -1,5 +1,12 @@
 package de.othr.plantico
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import de.othr.plantico.ui.PlantActivity
+import de.othr.plantico.ui.homescreen.HomescreenActivity
+import de.othr.plantico.ui.search.SearchableActivity
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.ZoneOffset
@@ -29,4 +36,38 @@ fun Date.addDays(days: Int): Date {
 fun Date.nowUTC(): Date {
     return Date.from(LocalDateTime.now().toInstant(ZoneOffset.UTC))
 
+}
+
+fun BottomNavigationView.setupMenuBinding(id: Int, activity: Activity) {
+    this.selectedItemId = id
+    this.setOnItemSelectedListener { menu ->
+
+        when (menu.itemId) {
+
+            R.id.action_home -> {
+                val intent = Intent(activity, HomescreenActivity::class.java)
+                activity.startActivity(intent)
+                true
+            }
+
+            R.id.action_plant -> {
+                val intent = Intent(activity, PlantActivity::class.java)
+                activity.startActivity(intent)
+                true
+            }
+
+            R.id.action_search -> {
+                val intent = Intent(activity, SearchableActivity::class.java)
+                activity.startActivity(intent)
+                true
+            }
+
+            R.id.action_user -> {
+
+                true
+            }
+
+            else -> false
+        }
+    }
 }

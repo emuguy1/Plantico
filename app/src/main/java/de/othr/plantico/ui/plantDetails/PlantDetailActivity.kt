@@ -1,12 +1,10 @@
 package de.othr.plantico.ui.plantDetails
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
@@ -15,15 +13,11 @@ import de.othr.plantico.PlantViewModelFactory
 import de.othr.plantico.R
 import de.othr.plantico.database.PlantApplication
 import de.othr.plantico.database.entities.Plant
-import de.othr.plantico.databinding.ActivityHomescreenBinding
 import de.othr.plantico.databinding.ActivityPlantDetailPageBinding
+import de.othr.plantico.setupMenuBinding
 import de.othr.plantico.ui.PlantActivity
-import de.othr.plantico.ui.homescreen.HomescreenActivity
-import de.othr.plantico.ui.homescreen.PlantAdapter
-import de.othr.plantico.ui.homescreen.WateringAdapter
-import de.othr.plantico.ui.search.SearchableActivity
 
-class PlantDetailActivity() : AppCompatActivity() {
+class PlantDetailActivity : AppCompatActivity() {
 
 
     private var plantID = 0
@@ -112,40 +106,7 @@ class PlantDetailActivity() : AppCompatActivity() {
                 }
             }
         }
-        setupMenuBinding()
+        binding.bottomNavigation.setupMenuBinding(R.id.action_home,this)
     }
 
-    fun setupMenuBinding() {
-        binding.bottomNavigation.selectedItemId = R.id.action_home
-        binding.bottomNavigation.setOnItemSelectedListener { menu ->
-
-            when (menu.itemId) {
-
-                R.id.action_home -> {
-                    val intent = Intent(this, HomescreenActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-
-                R.id.action_plant -> {
-                    val intent = Intent(this, PlantActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-
-                R.id.action_search -> {
-                    val intent = Intent(this, SearchableActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-
-                R.id.action_user -> {
-
-                    true
-                }
-
-                else -> false
-            }
-        }
-    }
 }

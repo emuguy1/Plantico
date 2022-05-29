@@ -96,7 +96,6 @@
                 android:text="Cupressaceae"
                 android:textColor="@color/primary"
                 android:textSize="22sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/plant_family_header"
                 app:layout_constraintTop_toTopOf="@+id/plant_family_header" />
@@ -120,7 +119,6 @@
                 android:text="-"
                 android:textColor="@color/primary"
                 android:textSize="22sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/plant_subfamily_header"
                 app:layout_constraintTop_toTopOf="@+id/plant_subfamily_header" />
@@ -144,7 +142,6 @@
                 android:text="Juniperus"
                 android:textColor="@color/primary"
                 android:textSize="22sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/plant_tribe_header"
                 app:layout_constraintTop_toTopOf="@+id/plant_tribe_header" />
@@ -168,7 +165,6 @@
                 android:text="Juniperus"
                 android:textColor="@color/primary"
                 android:textSize="22sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/plant_genus_header"
                 app:layout_constraintTop_toTopOf="@+id/plant_genus_header" />
@@ -192,7 +188,6 @@
                 android:text="-"
                 android:textColor="@color/primary"
                 android:textSize="22sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/plant_species_header"
                 app:layout_constraintTop_toTopOf="@+id/plant_species_header" />
@@ -287,7 +282,6 @@
                 android:text="4 Days"
                 android:textColor="@color/primary"
                 android:textSize="22sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/plant_watering_cycle_header"
                 app:layout_constraintTop_toTopOf="@+id/plant_watering_cycle_header" />
@@ -354,7 +348,7 @@
                         android:id="@+id/plant_propogations_instructions_header"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/plant_propogations_instructions"
+                        android:text="@string/plant_propagations_instructions"
                         android:textColor="@color/white"
                         android:textSize="22sp"
                         android:textStyle="bold"

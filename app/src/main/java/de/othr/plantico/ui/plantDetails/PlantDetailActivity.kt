@@ -50,7 +50,7 @@ class PlantDetailActivity : AppCompatActivity() {
         layout.flexDirection = FlexDirection.ROW
         layout.justifyContent = JustifyContent.FLEX_START
         binding.categoriesItemList.layoutManager = layout
-        val adapter = CategorieListAdapter(
+        val adapter = CategoryListAdapter(
             this
         )
         binding.categoriesItemList.adapter = adapter

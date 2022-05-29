@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import de.othr.plantico.database.entities.PlantCategory
 import de.othr.plantico.databinding.ViewCategoriesItemBinding
 
-class CategorieListAdapter(var context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class CategoryListAdapter(var context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var items = mutableListOf<PlantCategory>()
     lateinit var itemList: RecyclerView
 
@@ -16,7 +16,7 @@ class CategorieListAdapter(var context: Context) : RecyclerView.Adapter<Recycler
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = items[position]
-        (holder as CastegoriesItemViewHolder).bindTo(item)
+        (holder as CategoriesItemViewHolder).bindTo(item)
     }
 
     override fun getItemCount() = items.size
@@ -32,18 +32,18 @@ class CategorieListAdapter(var context: Context) : RecyclerView.Adapter<Recycler
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CastegoriesItemViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriesItemViewHolder {
         val binding = ViewCategoriesItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         )
 
-        return CastegoriesItemViewHolder(binding)
+        return CategoriesItemViewHolder(binding)
     }
 
 
-    inner class CastegoriesItemViewHolder(binding: ViewCategoriesItemBinding) :
+    inner class CategoriesItemViewHolder(binding: ViewCategoriesItemBinding) :
         RecyclerView.ViewHolder(
             binding.root
         ),

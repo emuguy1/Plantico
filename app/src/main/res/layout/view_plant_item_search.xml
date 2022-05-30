@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/plant_card"
+                android:layout_width="match_parent"
+                android:layout_height="115dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="15dp"
+                android:layout_weight="5"
+                app:cardBackgroundColor="@color/primary"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/plant_title_text"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="105dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:minLines="1"
+                        android:text="Plant Name"
+                        android:textAppearance="?attr/textAppearanceHeadline6"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toStartOf="@+id/watering_light"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/watering_light"
+                        android:layout_width="13dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/ic_waterdropplett_full_icon"
+                        app:layout_constraintBottom_toBottomOf="@+id/plant_title_text"
+                        app:layout_constraintEnd_toStartOf="@+id/watering_medium"
+                        app:layout_constraintTop_toBottomOf="@id/plant_title_text"
+                        app:layout_constraintTop_toTopOf="@id/plant_title_text" />
+
+                    <ImageView
+                        android:id="@+id/watering_medium"
+                        android:layout_width="13dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/ic_waterdropplett_empty_icon"
+                        app:layout_constraintEnd_toStartOf="@+id/watering_heavy"
+                        app:layout_constraintTop_toTopOf="@+id/watering_light" />
+
+                    <ImageView
+                        android:id="@+id/watering_heavy"
+                        android:layout_width="13dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="15dp"
+                        android:src="@drawable/ic_waterdropplett_empty_icon"
+                        app:layout_constraintBottom_toBottomOf="@+id/watering_medium"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/watering_medium" />
+
+                    <TextView
+                        android:id="@+id/plant_difficulty_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="105dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/plant_difficulty_header"
+                        android:textAppearance="?attr/textAppearanceBody1"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/plant_title_text" />
+
+                    <ImageView
+                        android:id="@+id/plant_difficulty_easy"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_marginStart="3dp"
+                        android:src="@drawable/ic_leaf_icon"
+                        app:layout_constraintBottom_toBottomOf="@+id/plant_difficulty_header"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/plant_difficulty_header"
+                        app:layout_constraintTop_toTopOf="@+id/plant_difficulty_header" />
+
+                    <ImageView
+                        android:id="@+id/plant_difficulty_medium"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_marginStart="3dp"
+                        android:src="@drawable/ic_leaf_icon"
+                        app:layout_constraintBottom_toBottomOf="@+id/plant_difficulty_easy"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/plant_difficulty_easy"
+                        app:layout_constraintTop_toTopOf="@+id/plant_difficulty_easy" />
+
+                    <ImageView
+                        android:id="@+id/plant_difficulty_hard"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_marginStart="3dp"
+                        android:src="@drawable/ic_leaf_icon"
+                        app:layout_constraintBottom_toBottomOf="@+id/plant_difficulty_medium"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/plant_difficulty_medium"
+                        app:layout_constraintTop_toTopOf="@+id/plant_difficulty_medium" />
+
+                    <TextView
+                        android:id="@+id/plant_category_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="105dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/plant_category_header"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?attr/textAppearanceBody1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/plant_difficulty_header" />
+
+                    <TextView
+                        android:id="@+id/plant_category_text"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginEnd="16dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:minLines="1"
+                        android:text="Indoor, Big Leafs, Big plants"
+                        android:textAppearance="?attr/textAppearanceBody1"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/plant_category_header"
+                        app:layout_constraintTop_toTopOf="@+id/plant_category_header" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="135dp"
+                android:contentDescription="Plant Image"
+                android:elevation="20dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/cactus_image"
+                app:layout_constraintBottom_toBottomOf="@+id/plant_card"
+                app:layout_constraintLeft_toLeftOf="@+id/plant_card"
+                app:layout_constraintTop_toTopOf="parent"
+
+
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

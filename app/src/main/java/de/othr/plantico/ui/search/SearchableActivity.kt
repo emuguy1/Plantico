@@ -16,7 +16,6 @@ import de.othr.plantico.database.entities.Plant
 import de.othr.plantico.databinding.ActivitySearchBinding
 import de.othr.plantico.ui.PlantActivity
 import de.othr.plantico.ui.homescreen.HomescreenActivity
-import de.othr.plantico.ui.homescreen.PlantAdapter
 
 class SearchableActivity : AppCompatActivity() {
 
@@ -34,7 +33,7 @@ class SearchableActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val adapter = PlantAdapter()
+        val adapter = SearchPlantAdapter(application)
         binding.recyclerviewSearchedPlants.adapter = adapter
         binding.recyclerviewSearchedPlants.layoutManager = LinearLayoutManager(this)
 

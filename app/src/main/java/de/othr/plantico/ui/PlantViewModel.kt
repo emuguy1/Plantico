@@ -41,6 +41,7 @@ class PlantViewModel(private val repository: Repository) : ViewModel() {
     fun getAllOwnedPlantByPlantID(plantID: Int): LiveData<List<OwnedPlant>> {
         return repository.getAllOwnedPlantByPlantID(plantID).asLiveData()
     }
+
 }
 
 class PlantViewModelFactory(private val repository: Repository) : ViewModelProvider.Factory {

@@ -209,7 +209,7 @@ abstract class PlanticoDB : RoomDatabase() {
                     1,
                     Date().nowUTC(),
                     null,
-                    null,
+                    30,
                     null
                 )
             )

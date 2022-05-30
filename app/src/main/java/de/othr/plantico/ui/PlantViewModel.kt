@@ -6,7 +6,7 @@ import de.othr.plantico.database.entities.OwnedPlant
 import de.othr.plantico.database.entities.Plant
 import kotlinx.coroutines.launch
 
-class TestViewModel(private val repository: Repository) : ViewModel() {
+class PlantViewModel(private val repository: Repository) : ViewModel() {
     val allPlants: LiveData<List<Plant>> = repository.allPlants.asLiveData()
     val allOwnedPlants: LiveData<List<OwnedPlant>> = repository.allOwnedPlants.asLiveData()
 
@@ -17,8 +17,29 @@ class TestViewModel(private val repository: Repository) : ViewModel() {
         repository.insertPlant(plant)
     }
 
-    fun insertOwnedPlant(plant: OwnedPlant)= viewModelScope.launch {
+    fun insertOwnedPlant(plant: OwnedPlant) = viewModelScope.launch {
         repository.insertOwnedPlant(plant)
+    }
+
+    fun deleteOwnedPlantByID(ownedPlantID: Int) = viewModelScope.launch {
+        repository.deleteOwnedPlantByID(ownedPlantID)
+    }
+
+    fun updateOwnedPlant(ownedPlant: OwnedPlant) = viewModelScope.launch {
+        repository.updateOwnedPlant(ownedPlant)
+    }
+
+
+    fun getPlantByID(plantID: Int): Plant {
+        return repository.getPlantByID(plantID)
+    }
+
+    fun getOwnedPlantByID(ownedPlantID: Int): OwnedPlant {
+        return repository.getOwnedPlantByID(ownedPlantID)
+    }
+
+    fun getAllOwnedPlantByPlantID(plantID: Int): LiveData<List<OwnedPlant>> {
+        return repository.getAllOwnedPlantByPlantID(plantID).asLiveData()
     }
 
     companion object {
@@ -29,11 +50,11 @@ class TestViewModel(private val repository: Repository) : ViewModel() {
     }
 }
 
-class TestViewModelFactory(private val repository: Repository) : ViewModelProvider.Factory {
+class PlantViewModelFactory(private val repository: Repository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(TestViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(PlantViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return TestViewModel(repository) as T
+            return PlantViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

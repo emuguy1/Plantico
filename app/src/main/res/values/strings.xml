@@ -32,4 +32,14 @@
     <string name="results_found">%d results found</string>
     <string name="no_results_found">No results found for your query.</string>
     <string name="plantico_app_logo">Plantico</string>
+    <string name="plant_tribe_header">Tribe:</string>
+    <string name="plant_species_header">Type Species:</string>
+    <string name="plant_categories_header">Categories:</string>
+    <string name="plant_watering_header">Watering level:</string>
+    <string name="plant_watering_cycle_header">Watering cycle:</string>
+    <string name="plant_general_description">General Description:</string>
+    <string name="plant_propagation_instructions">Propagation Instructions:</string>
+    <string name="plant_watering_instructions">Watering Instructions:</string>
+    <string name="plant_difficulty">Difficulty:</string>
+    <string name="add_plant_button_text">Add Plant</string>
 </resources>

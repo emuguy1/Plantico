@@ -41,13 +41,6 @@ class PlantViewModel(private val repository: Repository) : ViewModel() {
     fun getAllOwnedPlantByPlantID(plantID: Int): LiveData<List<OwnedPlant>> {
         return repository.getAllOwnedPlantByPlantID(plantID).asLiveData()
     }
-
-    companion object {
-        //Search for plants that contain the query as a substring. Not case-sensitive!
-        fun searchForPlantsInList(plants: List<Plant>, query: String): List<Plant> {
-            return plants.filter { plant: Plant -> plant.plantName.contains(query, ignoreCase = true) }
-        }
-    }
 }
 
 class PlantViewModelFactory(private val repository: Repository) : ViewModelProvider.Factory {

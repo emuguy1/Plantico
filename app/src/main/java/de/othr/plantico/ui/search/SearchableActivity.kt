@@ -54,7 +54,7 @@ class SearchableActivity : AppCompatActivity() {
         // Register Listener
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                val results = searchForPlantsInList(allPlants, query)
+                val results = searchForPlantsInList(query)
                 if (results.isEmpty()) {
                     binding.recyclerviewSearchedPlants.visibility = View.GONE
                     binding.noResultsFound.visibility = View.VISIBLE
@@ -67,7 +67,7 @@ class SearchableActivity : AppCompatActivity() {
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                val results = searchForPlantsInList(allPlants, newText)
+                val results = searchForPlantsInList(newText)
                 adapter.submitList(
                     results
                 )
@@ -80,9 +80,8 @@ class SearchableActivity : AppCompatActivity() {
         binding.bottomNavigation.setupMenuBinding(R.id.action_search,this)
     }
 
-    //TODO: Maybe change this to Filtering in database instead of accessing all plants?
     //Search for plants that contain the query as a substring. Not case-sensitive!
-    fun searchForPlantsInList(plants: List<Plant>, query: String): List<Plant> {
-        return plants.filter { plant: Plant -> plant.plantName.contains(query, ignoreCase = true) }
+    fun searchForPlantsInList(query: String): List<Plant> {
+        return allPlants.filter { plant: Plant -> plant.plantName.contains(query, ignoreCase = true) }
     }
 }

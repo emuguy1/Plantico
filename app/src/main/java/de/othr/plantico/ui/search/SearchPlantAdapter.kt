@@ -19,7 +19,7 @@ import de.othr.plantico.ui.PlantActivity
 
 class SearchPlantAdapter(context: Context) :
     ListAdapter<Plant, SearchPlantAdapter.SearchPlantHistoryViewHolder>(SearchPlantsComparator()) {
-    private val con: Context  = context
+    private val con: Context = context
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -47,11 +47,11 @@ class SearchPlantAdapter(context: Context) :
         View.OnClickListener {
         private val itemBinding = binding
 
-        private fun stringifyCategoryList(categoryList : List<PlantCategory>) : String {
-            var transformedList : String = ""
-            for(category in categoryList) {
+        private fun stringifyCategoryList(categoryList: List<PlantCategory>): String {
+            var transformedList: String = ""
+            for (category in categoryList) {
                 transformedList += category.name.lowercase().replace('_', ' ')
-                if(categoryList.last() != category) {
+                if (categoryList.last() != category) {
                     transformedList += ", "
                 }
             }
@@ -65,7 +65,7 @@ class SearchPlantAdapter(context: Context) :
             itemBinding.plantCategoryText.text = stringifyCategoryList(plant.plantCategory)
 
             // Set displayed difficulty level
-            when(plant.difficulty) {
+            when (plant.difficulty) {
                 PlantDifficulty.EASY -> {
                     itemBinding.plantDifficultyEasy.visibility = View.VISIBLE
                     itemBinding.plantDifficultyMedium.visibility = View.GONE
@@ -84,21 +84,66 @@ class SearchPlantAdapter(context: Context) :
             }
 
             // Set displayed watering level
-            when(plant.wateringLevel) {
+            when (plant.wateringLevel) {
                 WateringLevel.LOW -> {
-                    itemBinding.wateringLight.setImageDrawable(ContextCompat.getDrawable(con,R.drawable.ic_waterdropplett_full_icon))
-                    itemBinding.wateringMedium.setImageDrawable(ContextCompat.getDrawable(con,R.drawable.ic_waterdropplett_empty_icon))
-                    itemBinding.wateringHeavy.setImageDrawable(ContextCompat.getDrawable(con,R.drawable.ic_waterdropplett_empty_icon))
+                    itemBinding.wateringLight.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            con,
+                            R.drawable.ic_waterdropplett_full_icon
+                        )
+                    )
+                    itemBinding.wateringMedium.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            con,
+                            R.drawable.ic_waterdropplett_empty_icon
+                        )
+                    )
+                    itemBinding.wateringHeavy.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            con,
+                            R.drawable.ic_waterdropplett_empty_icon
+                        )
+                    )
                 }
                 WateringLevel.MEDIUM -> {
-                    itemBinding.wateringLight.setImageDrawable(ContextCompat.getDrawable(con,R.drawable.ic_waterdropplett_full_icon))
-                    itemBinding.wateringMedium.setImageDrawable(ContextCompat.getDrawable(con,R.drawable.ic_waterdropplett_full_icon))
-                    itemBinding.wateringHeavy.setImageDrawable(ContextCompat.getDrawable(con,R.drawable.ic_waterdropplett_empty_icon))
+                    itemBinding.wateringLight.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            con,
+                            R.drawable.ic_waterdropplett_full_icon
+                        )
+                    )
+                    itemBinding.wateringMedium.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            con,
+                            R.drawable.ic_waterdropplett_full_icon
+                        )
+                    )
+                    itemBinding.wateringHeavy.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            con,
+                            R.drawable.ic_waterdropplett_empty_icon
+                        )
+                    )
                 }
                 WateringLevel.HIGH -> {
-                    itemBinding.wateringLight.setImageDrawable(ContextCompat.getDrawable(con,R.drawable.ic_waterdropplett_full_icon))
-                    itemBinding.wateringMedium.setImageDrawable(ContextCompat.getDrawable(con,R.drawable.ic_waterdropplett_full_icon))
-                    itemBinding.wateringHeavy.setImageDrawable(ContextCompat.getDrawable(con,R.drawable.ic_waterdropplett_full_icon))
+                    itemBinding.wateringLight.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            con,
+                            R.drawable.ic_waterdropplett_full_icon
+                        )
+                    )
+                    itemBinding.wateringMedium.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            con,
+                            R.drawable.ic_waterdropplett_full_icon
+                        )
+                    )
+                    itemBinding.wateringHeavy.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            con,
+                            R.drawable.ic_waterdropplett_full_icon
+                        )
+                    )
                 }
             }
 

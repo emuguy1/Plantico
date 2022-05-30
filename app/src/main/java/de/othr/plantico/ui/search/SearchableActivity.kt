@@ -114,6 +114,11 @@ class SearchableActivity : AppCompatActivity() {
 
     //Search for plants that contain the query as a substring. Not case-sensitive!
     fun searchForPlantsInList(query: String): List<Plant> {
-        return allPlants.filter { plant: Plant -> plant.plantName.contains(query, ignoreCase = true) }
+        return allPlants.filter { plant: Plant ->
+            plant.plantName.contains(
+                query,
+                ignoreCase = true
+            )
+        }
     }
 }

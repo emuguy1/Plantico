@@ -13,6 +13,8 @@ import de.othr.plantico.PlantViewModelFactory
 import de.othr.plantico.R
 import de.othr.plantico.database.PlantApplication
 import de.othr.plantico.database.entities.Plant
+import de.othr.plantico.database.entities.PlantDifficulty
+import de.othr.plantico.database.entities.WateringLevel
 import de.othr.plantico.databinding.ActivityPlantDetailPageBinding
 import de.othr.plantico.setupMenuBinding
 import de.othr.plantico.ui.PlantActivity
@@ -63,7 +65,6 @@ class PlantDetailActivity : AppCompatActivity() {
                 plantList.addAll(it)
                 plant = plantList.find { plant -> plant.id == plantID }!!
                 if (plant != null) {
-
                     binding.apply {
                         plantName.text = plant!!.plantName
                         plantFamilyText.text = plant!!.family
@@ -76,37 +77,56 @@ class PlantDetailActivity : AppCompatActivity() {
                         plantGeneralDescriptionText.text = plant!!.desc
                         plantPropogationsInstructionsText.text = plant!!.propagationDesc
                         plantWateringInstructionsText.text = plant!!.wateringDesc
+
                         //Difficulty
-                        //1 equals PlantDifficulty.INTERMEDIATE
-                        if (plant!!.difficulty.ordinal < 1) {
-                            plantDifficultyMedium.visibility = View.INVISIBLE
+                        val invisible = View.INVISIBLE
+                        val visible = View.VISIBLE
+                        when (plant!!.difficulty) {
+                            PlantDifficulty.EASY -> {
+                                plantDifficultyEasy.visibility = visible
+                                plantDifficultyMedium.visibility = invisible
+                                plantDifficultyHard.visibility = invisible
+                            }
+                            PlantDifficulty.INTERMEDIATE -> {
+                                plantDifficultyEasy.visibility = visible
+                                plantDifficultyMedium.visibility = visible
+                                plantDifficultyHard.visibility = invisible
+                            }
+                            PlantDifficulty.ADVANCED -> {
+                                plantDifficultyEasy.visibility = visible
+                                plantDifficultyMedium.visibility = visible
+                                plantDifficultyHard.visibility = visible
+                            }
                         }
-                        //2 equals PlantDifficulty.ADVANCED
-                        if (plant!!.difficulty.ordinal < 2) {
-                            plantDifficultyHard.visibility = View.INVISIBLE
-                        }
+
                         //Watering
-                        if (plant!!.wateringLevel.ordinal < 2) {
-                            wateringHeavy.setImageDrawable(
-                                ContextCompat.getDrawable(
-                                    application,
-                                    R.drawable.ic_waterdropplett_empty_icon
-                                )
-                            )
-                        }
-                        if (plant!!.wateringLevel.ordinal < 1) {
-                            wateringMedium.setImageDrawable(
-                                ContextCompat.getDrawable(
-                                    application,
-                                    R.drawable.ic_waterdropplett_empty_icon
-                                )
-                            )
+                        val waterdropplettFull = ContextCompat
+                            .getDrawable(application, R.drawable.ic_waterdropplett_full_icon)
+                        val waterdropplettEmpty = ContextCompat
+                            .getDrawable(application, R.drawable.ic_waterdropplett_empty_icon)
+
+                        when (plant!!.wateringLevel) {
+                            WateringLevel.LOW -> {
+                                wateringLight.setImageDrawable(waterdropplettFull)
+                                wateringMedium.setImageDrawable(waterdropplettEmpty)
+                                wateringHeavy.setImageDrawable(waterdropplettEmpty)
+                            }
+                            WateringLevel.MEDIUM -> {
+                                wateringLight.setImageDrawable(waterdropplettFull)
+                                wateringMedium.setImageDrawable(waterdropplettFull)
+                                wateringHeavy.setImageDrawable(waterdropplettEmpty)
+                            }
+                            WateringLevel.HIGH -> {
+                                wateringLight.setImageDrawable(waterdropplettFull)
+                                wateringMedium.setImageDrawable(waterdropplettFull)
+                                wateringHeavy.setImageDrawable(waterdropplettFull)
+                            }
                         }
                     }
                 }
             }
         }
-        binding.bottomNavigation.setupMenuBinding(R.id.action_home,this)
+        binding.bottomNavigation.setupMenuBinding(R.id.action_home, this)
     }
 
 }

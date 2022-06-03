@@ -13,12 +13,20 @@ jobs:
 
       steps:
         - uses: actions/checkout@v1
-        - name: set up JDK 11
-          uses: actions/setup-java@v1
+        - name: Instrumentation Tests
+          uses: reactivecircus/android-emulator-runner@v2
           with:
-            java-version: 11
-        - name: Unit tests
-          run: bash ./gradlew test --stacktrace
+            api-level: 29
+            target: default
+            arch: x86
+            profile: Nexus 6
+            script: ./gradlew connectedCheck --stacktrace
+        - name: Upload Reports
+          uses: actions/upload-artifact@v2
+          with:
+            name: Test-Reports
+            path: app/build/reports
+          if: always()
   apk:
     name: Generate APK
     runs-on: ubuntu-latest

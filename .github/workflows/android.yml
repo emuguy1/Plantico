@@ -18,13 +18,7 @@ jobs:
           with:
             java-version: 11
         - name: Unit tests
-          run: bash ./gradlew testAll --stacktrace
-        - name: Upload Test results
-          uses: actions/upload-artifact@v1
-          with:
-            name: testresults
-            path: app/build/outputs/androidTest-result/connected/test-result.pb
-
+          run: bash ./gradlew test --stacktrace
   apk:
     name: Generate APK
     runs-on: ubuntu-latest

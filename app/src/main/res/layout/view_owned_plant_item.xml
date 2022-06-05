@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/Room"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Living Room"
+        android:textStyle="bold"
+        android:textColor="@color/grey"
+        android:textSize="19sp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:visibility="gone"/>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Room">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/plant_card"
+                android:layout_width="match_parent"
+                android:layout_height="115dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="15dp"
+                android:layout_weight="5"
+                app:cardBackgroundColor="@color/primary"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/plant_title_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="105dp"
+                        android:layout_marginTop="3dp"
+                        android:text="Title"
+                        android:ellipsize = "end"
+                        android:minLines = "1"
+                        android:maxLines = "1"
+                        android:textAppearance="?attr/textAppearanceHeadline6"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/plant_family_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="105dp"
+                        android:textStyle="bold"
+                        android:text="@string/plant_family_header"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/plant_title_text" />
+                    <TextView
+                        android:id="@+id/plant_family_text"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Cupressacae"
+                        android:textColor="@color/white"
+                        android:ellipsize = "end"
+                        android:minLines = "1"
+                        android:maxLines = "1"
+                        android:layout_marginStart="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/plant_family_header"
+                        app:layout_constraintTop_toBottomOf="@+id/plant_title_text" />
+
+                    <TextView
+                        android:id="@+id/plant_subfamily_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="105dp"
+                        android:textStyle="bold"
+                        android:text="@string/plant_subfamily_header"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/plant_family_header" />
+                    <TextView
+                        android:id="@+id/plant_subfamily_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Monsteroidae"
+                        android:ellipsize = "end"
+                        android:minLines = "1"
+                        android:maxLines = "1"
+                        android:textColor="@color/white"
+                        android:layout_marginStart="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/plant_subfamily_header"
+                        app:layout_constraintTop_toBottomOf="@+id/plant_family_header" />
+                    <TextView
+                        android:id="@+id/plant_genus_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="105dp"
+                        android:textStyle="bold"
+                        android:text="@string/plant_genus_header"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/plant_subfamily_header" />
+                    <TextView
+                        android:id="@+id/plant_genus_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Juniperus"
+                        android:ellipsize = "end"
+                        android:minLines = "1"
+                        android:maxLines = "1"
+                        android:textColor="@color/white"
+                        android:layout_marginStart="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/plant_genus_header"
+                        app:layout_constraintTop_toBottomOf="@+id/plant_subfamily_header" />
+
+                    <TextView
+                        android:id="@+id/plant_difficulty_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="105dp"
+                        android:textStyle="bold"
+                        android:text="@string/plant_difficulty_header"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/plant_genus_header" />
+                    <ImageView
+                        android:id="@+id/plant_difficulty_easy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:src="@drawable/ic_leaf_icon"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/plant_difficulty_header"
+                        app:layout_constraintTop_toTopOf="@+id/plant_difficulty_header"
+                        app:layout_constraintBottom_toBottomOf="@+id/plant_difficulty_header"/>
+                    <ImageView
+                        android:id="@+id/plant_difficulty_medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:src="@drawable/ic_leaf_icon"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/plant_difficulty_easy"
+                        app:layout_constraintTop_toTopOf="@+id/plant_difficulty_easy"
+                        app:layout_constraintBottom_toBottomOf="@+id/plant_difficulty_easy"/>
+                    <ImageView
+                        android:id="@+id/plant_difficulty_hard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:src="@drawable/ic_leaf_icon"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/plant_difficulty_medium"
+                        app:layout_constraintTop_toTopOf="@+id/plant_difficulty_medium"
+                        app:layout_constraintBottom_toBottomOf="@+id/plant_difficulty_medium"/>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="135dp"
+                android:contentDescription="Plant Image"
+                android:elevation="20dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/cactus_image"
+                app:layout_constraintBottom_toBottomOf="@+id/plant_card"
+                app:layout_constraintLeft_toLeftOf="@+id/plant_card"
+                app:layout_constraintTop_toTopOf="parent"
+
+
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

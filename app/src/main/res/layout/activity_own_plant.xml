@@ -8,38 +8,35 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_homescreen"
-        android:background="@color/primary"
-        app:titleTextColor="@color/white"
-        android:gravity="center"
         style="@style/Theme.Design.NoActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        app:titleTextColor="@color/white">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_plantico_text"/>
+            android:src="@drawable/ic_plantico_text" />
 
     </androidx.appcompat.widget.Toolbar>
 
-    <TextView
-        android:id="@+id/last_visited_plants_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Living Room"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:textStyle="bold"
-        android:textSize="15sp"
-        android:textColor="@color/grey"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/plant_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_homescreen"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_homescreen" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -52,8 +49,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/bottom_nav_menu" />
+
 
 
 

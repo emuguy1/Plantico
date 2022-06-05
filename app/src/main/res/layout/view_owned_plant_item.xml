@@ -69,22 +69,22 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/plant_family_header"
+                        android:id="@+id/plant_watering_time_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="105dp"
                         android:textStyle="bold"
-                        android:text="@string/plant_family_header"
+                        android:text="@string/days_till_watering"
                         android:textColor="@color/white"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/plant_title_text" />
                     <TextView
-                        android:id="@+id/plant_family_text"
+                        android:id="@+id/plant_watering_time_text"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Cupressacae"
+                        android:text="2 days"
                         android:textColor="@color/white"
                         android:ellipsize = "end"
                         android:minLines = "1"
@@ -92,26 +92,26 @@
                         android:layout_marginStart="3dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toEndOf="@+id/plant_family_header"
+                        app:layout_constraintStart_toEndOf="@+id/plant_watering_time_header"
                         app:layout_constraintTop_toBottomOf="@+id/plant_title_text" />
 
                     <TextView
-                        android:id="@+id/plant_subfamily_header"
+                        android:id="@+id/plant_age_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="105dp"
                         android:textStyle="bold"
-                        android:text="@string/plant_subfamily_header"
+                        android:text="@string/age"
                         android:textColor="@color/white"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/plant_family_header" />
+                        app:layout_constraintTop_toBottomOf="@+id/plant_watering_time_header" />
                     <TextView
-                        android:id="@+id/plant_subfamily_text"
+                        android:id="@+id/plant_age_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Monsteroidae"
+                        android:text="10 years old"
                         android:ellipsize = "end"
                         android:minLines = "1"
                         android:maxLines = "1"
@@ -119,80 +119,42 @@
                         android:layout_marginStart="3dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toEndOf="@+id/plant_subfamily_header"
-                        app:layout_constraintTop_toBottomOf="@+id/plant_family_header" />
-                    <TextView
-                        android:id="@+id/plant_genus_header"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="105dp"
-                        android:textStyle="bold"
-                        android:text="@string/plant_genus_header"
-                        android:textColor="@color/white"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/plant_subfamily_header" />
-                    <TextView
-                        android:id="@+id/plant_genus_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Juniperus"
-                        android:ellipsize = "end"
-                        android:minLines = "1"
-                        android:maxLines = "1"
-                        android:textColor="@color/white"
-                        android:layout_marginStart="3dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toEndOf="@+id/plant_genus_header"
-                        app:layout_constraintTop_toBottomOf="@+id/plant_subfamily_header" />
+                        app:layout_constraintStart_toEndOf="@+id/plant_age_header"
+                        app:layout_constraintTop_toBottomOf="@+id/plant_watering_time_header" />
 
-                    <TextView
-                        android:id="@+id/plant_difficulty_header"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <ImageView
+                        android:id="@+id/watering_light"
+                        android:layout_width="20dp"
+                        android:layout_height="24dp"
                         android:layout_marginStart="105dp"
-                        android:textStyle="bold"
-                        android:text="@string/plant_difficulty_header"
-                        android:textColor="@color/white"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/ic_waterdropplett_full_icon"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/plant_genus_header" />
+                        app:layout_constraintTop_toBottomOf="@+id/plant_age_text" />
+
                     <ImageView
-                        android:id="@+id/plant_difficulty_easy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="3dp"
-                        android:src="@drawable/ic_leaf_icon"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toEndOf="@+id/plant_difficulty_header"
-                        app:layout_constraintTop_toTopOf="@+id/plant_difficulty_header"
-                        app:layout_constraintBottom_toBottomOf="@+id/plant_difficulty_header"/>
+                        android:id="@+id/watering_medium"
+                        android:layout_width="20dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/ic_waterdropplett_empty_icon"
+                        app:layout_constraintEnd_toStartOf="@+id/watering_heavy"
+                        app:layout_constraintStart_toEndOf="@+id/watering_light"
+                        app:layout_constraintTop_toBottomOf="@+id/plant_age_text" />
+
                     <ImageView
-                        android:id="@+id/plant_difficulty_medium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="3dp"
-                        android:src="@drawable/ic_leaf_icon"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toEndOf="@+id/plant_difficulty_easy"
-                        app:layout_constraintTop_toTopOf="@+id/plant_difficulty_easy"
-                        app:layout_constraintBottom_toBottomOf="@+id/plant_difficulty_easy"/>
-                    <ImageView
-                        android:id="@+id/plant_difficulty_hard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="3dp"
-                        android:src="@drawable/ic_leaf_icon"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toEndOf="@+id/plant_difficulty_medium"
-                        app:layout_constraintTop_toTopOf="@+id/plant_difficulty_medium"
-                        app:layout_constraintBottom_toBottomOf="@+id/plant_difficulty_medium"/>
+                        android:id="@+id/watering_heavy"
+                        android:layout_width="20dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/ic_waterdropplett_empty_icon"
+                        app:layout_constraintBottom_toBottomOf="@+id/watering_medium"
+                        app:layout_constraintStart_toEndOf="@+id/watering_medium"
+                        app:layout_constraintTop_toTopOf="@+id/watering_medium" />
+
+
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

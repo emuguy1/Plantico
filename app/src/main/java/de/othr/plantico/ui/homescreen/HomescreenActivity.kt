@@ -42,6 +42,7 @@ class HomescreenActivity : AppCompatActivity() {
             // Update the cached copy of the words in the adapter.
             plants.let {
                 adapter.submitList(it)
+                wateringPlantAdapter.addPlants(it)
                 if (it.isNotEmpty()) {
                     binding.recyclerviewLastVisitedPlants.visibility = View.VISIBLE
                     binding.noDataSearch.visibility = View.GONE
@@ -49,9 +50,11 @@ class HomescreenActivity : AppCompatActivity() {
             }
         }
 
-        plantViewModel.allOwnedPlants.observe(this) { plants ->
+        plantViewModel.getAllOwnedPlantSortedByWateringTime().observe(this) { ownedPlants ->
             // Update the cached copy of the words in the adapter.
-            plants.let {
+            ownedPlants.let {
+                binding.recyclerviewUpcomingWatering.visibility = View.GONE
+                binding.noDataWatering.visibility = View.VISIBLE
                 wateringPlantAdapter.submitList(it)
                 if (it.isNotEmpty()) {
                     binding.recyclerviewUpcomingWatering.visibility = View.VISIBLE

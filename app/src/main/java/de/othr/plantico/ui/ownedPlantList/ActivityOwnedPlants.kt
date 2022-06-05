@@ -8,9 +8,9 @@ import de.othr.plantico.PlantViewModel
 import de.othr.plantico.PlantViewModelFactory
 import de.othr.plantico.R
 import de.othr.plantico.database.PlantApplication
-import de.othr.plantico.database.entities.Plant
 import de.othr.plantico.databinding.ActivityOwnPlantBinding
 import de.othr.plantico.setupMenuBinding
+import de.othr.plantico.ui.homescreen.WateringAdapter
 
 
 class ActivityOwnedPlants : AppCompatActivity() {
@@ -26,7 +26,7 @@ class ActivityOwnedPlants : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val adapter = PlantListAdapter()
+        val adapter = OwnedPlantListAdapter(this)
         binding.plantList.adapter = adapter
         binding.plantList.layoutManager = LinearLayoutManager(this)
 
@@ -34,7 +34,7 @@ class ActivityOwnedPlants : AppCompatActivity() {
         plantViewModel.allOwnedPlants.observe(this) { plants ->
             // Update the cached copy of the words in the adapter.
             plants.let {
-                adapter.setPlants(it)
+                adapter.submitList(it)
             }
         }
 

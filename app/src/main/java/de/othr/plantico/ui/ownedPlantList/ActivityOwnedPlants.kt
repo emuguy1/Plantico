@@ -40,7 +40,7 @@ class ActivityOwnedPlants : AppCompatActivity() {
 
         plantViewModel.allPlants.observe(this) { plants ->
             plants.let {
-                adapter.addPlants(it)
+                adapter.setPlantList(it)
             }
         }
 

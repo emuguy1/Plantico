@@ -29,7 +29,7 @@ class OwnedPlantListAdapter(context: Context) :
     private val con: Context = context
     private var plantList: List<Plant>? = null
 
-    fun addPlants(plants: List<Plant>) {
+    fun setPlantList(plants: List<Plant>) {
         plantList = plants
         notifyDataSetChanged()
     }
@@ -98,11 +98,8 @@ class OwnedPlantListAdapter(context: Context) :
 
 
                     var wateringDate = plant.lastWatered
-                    wateringDate = if (plant.customWateringCycle != null) {
-                        wateringDate.addDays(plant.customWateringCycle)
-                    } else {
-                        wateringDate.addDays(realPlant.wateringCycleDays)
-                    }
+                    wateringDate = wateringDate.addDays(plant.customWateringCycle)
+
                     val diff: Long = wateringDate.time - currentDate.time
                     val days = (((diff / 1000) / 60) / 60) / 24
                     itemBinding.plantWateringTimeText.text = "$days days"
@@ -130,12 +127,12 @@ class OwnedPlantListAdapter(context: Context) :
                     itemBinding.plantAgeText.text = "-"
                 }
             }
-
+            itemBinding.plantCard.setOnClickListener(this)
         }
 
         override fun onClick(p0: View?) {
             if (p0 != null) {
-                if (p0.id == R.id.watering_card) {
+                if (p0.id == R.id.plant_card) {
                     val context = p0.context
                     val intent = Intent(context, PlantActivity::class.java).putExtra(
                         PlantActivity.SELECTED_PLANT,
@@ -145,8 +142,6 @@ class OwnedPlantListAdapter(context: Context) :
                 }
             }
         }
-
-
     }
 
 
@@ -159,5 +154,4 @@ class OwnedPlantListAdapter(context: Context) :
             return oldItem.plantName == newItem.plantName
         }
     }
-
 }

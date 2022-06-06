@@ -31,7 +31,7 @@ class ActivityOwnedPlants : AppCompatActivity() {
         binding.plantList.layoutManager = LinearLayoutManager(this)
 
 
-        plantViewModel.allOwnedPlants.observe(this) { plants ->
+        plantViewModel.getAllOwnedPlantSortedByPlantLocation().observe(this) { plants ->
             // Update the cached copy of the words in the adapter.
             plants.let {
                 adapter.submitList(it)

@@ -14,6 +14,7 @@ import de.othr.plantico.databinding.PlantItemBinding
 import de.othr.plantico.databinding.ViewPlantItemHomescreenBinding
 import de.othr.plantico.ui.PlantActivity
 import de.othr.plantico.ui.PlantListAdapter
+import de.othr.plantico.ui.plantDetails.PlantDetailActivity
 
 class PlantAdapter : ListAdapter<Plant, PlantAdapter.PlantHistoryViewHolder>(PlantsComparator()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlantHistoryViewHolder {
@@ -64,7 +65,7 @@ class PlantAdapter : ListAdapter<Plant, PlantAdapter.PlantHistoryViewHolder>(Pla
             if (p0 != null) {
                 if (p0.id == R.id.plant_card) {
                     val context = p0.context
-                    val intent = Intent(context, PlantActivity::class.java).putExtra(
+                    val intent = Intent(context, PlantDetailActivity::class.java).putExtra(
                         PlantActivity.SELECTED_PLANT,
                         currentList[layoutPosition].id
                     )

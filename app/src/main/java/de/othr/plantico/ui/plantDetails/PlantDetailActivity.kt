@@ -1,5 +1,6 @@
 package de.othr.plantico.ui.plantDetails
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -18,6 +19,7 @@ import de.othr.plantico.database.entities.WateringLevel
 import de.othr.plantico.databinding.ActivityPlantDetailPageBinding
 import de.othr.plantico.setupMenuBinding
 import de.othr.plantico.ui.PlantActivity
+import de.othr.plantico.ui.ownedPlant.AddOwnedPlantActivity
 
 class PlantDetailActivity : AppCompatActivity() {
 
@@ -126,7 +128,22 @@ class PlantDetailActivity : AppCompatActivity() {
                 }
             }
         }
+
+        binding.addPlantButton.setOnClickListener {
+            val intent = Intent(this, AddOwnedPlantActivity::class.java).putExtra(
+                SELECTED_ADD_PLANT,
+                plant!!.id
+            )
+            startActivity(intent)
+        }
         binding.bottomNavigation.setupMenuBinding(R.id.action_home, this)
+
+
+    }
+
+    companion object {
+        const val SELECTED_ADD_PLANT = "selected_add_plant"
+
     }
 
 }

@@ -29,14 +29,17 @@
             android:name=".ui.search.SearchableActivity"
             android:exported="false"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Plantico.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.Plantico.NoActionBar"></activity>
         <activity
             android:name=".ui.plantDetails.PlantDetailActivity"
             android:exported="false"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Plantico.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.Plantico.NoActionBar"></activity>
+        <activity
+            android:name=".ui.ownedPlant.AddOwnedPlantActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Plantico.NoActionBar"></activity>
     </application>
 
 </manifest>

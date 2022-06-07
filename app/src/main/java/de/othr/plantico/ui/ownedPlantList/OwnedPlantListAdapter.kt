@@ -128,6 +128,7 @@ class OwnedPlantListAdapter(context: Context) :
                 }
             }
             itemBinding.plantCard.setOnClickListener(this)
+            //test
         }
 
         override fun onClick(p0: View?) {

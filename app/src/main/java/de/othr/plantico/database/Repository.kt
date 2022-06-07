@@ -51,5 +51,9 @@ class Repository(private val plantDAO: PlantDAO, private val ownedPlantDAO: Owne
         return ownedPlantDAO.getAllByPlantSortByLocation()
     }
 
+    fun getAllOwnedPlantSortedByWateringTime(): Flow<List<OwnedPlant>>{
+        return ownedPlantDAO.getAllOrderedByNextWatering()
+    }
+
 
 }

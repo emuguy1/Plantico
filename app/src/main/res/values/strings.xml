@@ -30,6 +30,7 @@
     <string name="Search">Search</string>
     <string name="Users">Profile</string>
     <string name="search_hint">Search plants</string>
+    <string name="search_category_dialog_title">Select your categories</string>
     <string name="results_found">%d results found</string>
     <string name="no_results_found">No results found for your query.</string>
     <string name="plantico_app_logo">Plantico</string>

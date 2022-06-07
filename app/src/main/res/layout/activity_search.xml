@@ -51,7 +51,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/search_view"
-        app:layout_constraintTop_toBottomOf="@+id/search_view" />
+        app:layout_constraintTop_toBottomOf="@+id/search_category" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_searched_plants"
@@ -98,7 +98,47 @@
         app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/bottom_nav_menu" />
 
+    <TextView
+        android:id="@+id/search_difficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Difficulty"
+        app:layout_constraintStart_toStartOf="@+id/search_view"
+        app:layout_constraintTop_toBottomOf="@+id/search_view" />
 
+    <Spinner
+        android:id="@+id/search_difficulty_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/search_difficulty"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/search_difficulty"
+        app:layout_constraintTop_toTopOf="@+id/search_difficulty" />
+
+    <TextView
+        android:id="@+id/search_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Category"
+        app:layout_constraintStart_toStartOf="@+id/search_difficulty"
+        app:layout_constraintTop_toBottomOf="@+id/search_difficulty" />
+
+    <Spinner
+        android:id="@+id/search_category_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/search_category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/search_category"
+        app:layout_constraintTop_toTopOf="@+id/search_category" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

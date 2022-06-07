@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.*
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import de.othr.plantico.PlantViewModel
 import de.othr.plantico.PlantViewModelFactory
@@ -17,7 +18,7 @@ import de.othr.plantico.databinding.ActivitySearchBinding
 import de.othr.plantico.setupMenuBinding
 import de.othr.plantico.ui.homescreen.PlantAdapter
 
-class SearchableActivity : AppCompatActivity() {
+class SearchableActivity : AppCompatActivity(), SearchCategoryDialogFragment.SearchCategoryDialogListener {
 
     private lateinit var binding: ActivitySearchBinding
     private val plantViewModel: PlantViewModel by viewModels {
@@ -26,6 +27,8 @@ class SearchableActivity : AppCompatActivity() {
 
     var adapter: ListAdapter? = null
     var allPlants: List<Plant> = ArrayList()
+
+    private var selectedCategories: List<PlantCategory> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,14 +44,7 @@ class SearchableActivity : AppCompatActivity() {
             plants.let {
                 // Set the plants list which should get searched
                 allPlants = it
-                // Set the Initial plants list in the adapter
-                // TODO: Maybe change this to frequently visited plants later on?
-                adapter.submitList(it)
-                binding.numberResultsFound.text = getString(R.string.results_found, it.size)
-                if (it.isNotEmpty()) {
-                    binding.recyclerviewSearchedPlants.visibility = View.VISIBLE
-                    binding.noResultsFound.visibility = View.GONE
-                }
+                executeSearch(adapter)
             }
         }
 
@@ -125,6 +121,15 @@ class SearchableActivity : AppCompatActivity() {
             }
         })
         binding.bottomNavigation.setupMenuBinding(R.id.action_search, this)
+
+        //Register Listener for Dialog Button
+        binding.testButton.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(p0: View?) {
+                val dialogFragment : SearchCategoryDialogFragment = SearchCategoryDialogFragment() //TODO: Add currentCategories as initialValue
+                dialogFragment.show(supportFragmentManager, "Search Category Dialog Fragment")
+            }
+
+        })
     }
 
     fun executeSearch(searchPlantAdapter: SearchPlantAdapter) {
@@ -158,5 +163,16 @@ class SearchableActivity : AppCompatActivity() {
                     && (if (difficulty != "") plant.difficulty.toString()
                 .lowercase() == difficulty.lowercase() else true)
         }
+    }
+
+    override fun onDialogPositiveClick(dialog: DialogFragment, selectedItems: ArrayList<Int>) {
+        // Set current Categories
+        System.out.println("POSITIVE: " + selectedItems)
+        //TODO: Set selectedCategories
+    }
+
+    override fun onDialogNegativeClick(dialog: DialogFragment, selectedItems: ArrayList<Int>) {
+        // Current Categories stay the same
+        System.out.println("NEGATIVE: " + selectedItems)
     }
 }

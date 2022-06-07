@@ -6,11 +6,27 @@ import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import de.othr.plantico.R
-import de.othr.plantico.database.entities.Plant
 import de.othr.plantico.database.entities.PlantCategory
 
 class SearchCategoryDialogFragment : DialogFragment() {
+
+    private lateinit var listener: SearchCategoryDialogListener
+
+    interface SearchCategoryDialogListener {
+        fun onDialogPositiveClick(dialog: DialogFragment, selectedItems: ArrayList<Int>)
+        fun onDialogNegativeClick(dialog: DialogFragment, selectedItems: ArrayList<Int>)
+    }
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        try {
+            // Instantiate the SearchCategoryDialogListener so we can send events to the host
+            listener = context as SearchCategoryDialogListener
+        } catch (e: ClassCastException) {
+            // The activity doesn't implement the interface, throw exception
+            throw ClassCastException((context.toString() +
+                    " must implement SearchCategoryDialogListener"))
+        }
+
         return activity?.let {
             val selectedItems = ArrayList<Int>() // Where we track the selected items
             val builder = AlertDialog.Builder(it)
@@ -19,7 +35,10 @@ class SearchCategoryDialogFragment : DialogFragment() {
                 // Specify the list array, the items to be selected by default (null for none),
                 // and the listener through which to receive callbacks when items are selected
                 .setMultiChoiceItems(
-                    arrayOf(PlantCategory.values().toString()), null,
+                    PlantCategory.values().map { plantCategory ->
+                        plantCategory.name.substring(0, 1).uppercase() + plantCategory.name.substring(1)
+                            .lowercase().replace('_', ' ')
+                    }.toTypedArray(), null,
                     DialogInterface.OnMultiChoiceClickListener { dialog, which, isChecked ->
                         if (isChecked) {
                             // If the user checked the item, add it to the selected items
@@ -34,13 +53,14 @@ class SearchCategoryDialogFragment : DialogFragment() {
                     DialogInterface.OnClickListener { dialog, id ->
                         // User clicked OK, so save the selectedItems results somewhere
                         // or return them to the component that opened the dialog
-                        //...
+                        // Trigger events of the host
+                        listener.onDialogPositiveClick(this, selectedItems)
                     })
                 .setNegativeButton("Cancel",
                     DialogInterface.OnClickListener { dialog, id ->
-                        //...
+                        // Trigger events of the host
+                        listener.onDialogNegativeClick(this, selectedItems)
                     })
-
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }

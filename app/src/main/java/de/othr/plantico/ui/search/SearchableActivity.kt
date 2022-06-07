@@ -1,5 +1,6 @@
 package de.othr.plantico.ui.search
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ListAdapter
@@ -14,7 +15,6 @@ import de.othr.plantico.database.PlantApplication
 import de.othr.plantico.database.entities.Plant
 import de.othr.plantico.databinding.ActivitySearchBinding
 import de.othr.plantico.setupMenuBinding
-import de.othr.plantico.ui.homescreen.PlantAdapter
 
 class SearchableActivity : AppCompatActivity() {
 
@@ -32,7 +32,7 @@ class SearchableActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val adapter = PlantAdapter()
+        val adapter = SearchPlantAdapter(application)
         binding.recyclerviewSearchedPlants.adapter = adapter
         binding.recyclerviewSearchedPlants.layoutManager = LinearLayoutManager(this)
 
@@ -82,6 +82,11 @@ class SearchableActivity : AppCompatActivity() {
 
     //Search for plants that contain the query as a substring. Not case-sensitive!
     fun searchForPlantsInList(query: String): List<Plant> {
-        return allPlants.filter { plant: Plant -> plant.plantName.contains(query, ignoreCase = true) }
+        return allPlants.filter { plant: Plant ->
+            plant.plantName.contains(
+                query,
+                ignoreCase = true
+            )
+        }
     }
 }

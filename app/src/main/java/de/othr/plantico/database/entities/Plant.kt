@@ -50,6 +50,7 @@ enum class PlantCategory {
     TROPICAL,
     SEMI_TROPICAL,
     ARID,
+    BALCONY,
     //means not Frost safe
     NON_HARDY
 }

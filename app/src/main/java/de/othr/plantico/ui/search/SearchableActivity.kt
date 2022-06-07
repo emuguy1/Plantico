@@ -16,19 +16,20 @@ import de.othr.plantico.database.entities.PlantCategory
 import de.othr.plantico.database.entities.PlantDifficulty
 import de.othr.plantico.databinding.ActivitySearchBinding
 import de.othr.plantico.setupMenuBinding
-import de.othr.plantico.ui.homescreen.PlantAdapter
 
-class SearchableActivity : AppCompatActivity(), SearchCategoryDialogFragment.SearchCategoryDialogListener {
+class SearchableActivity : AppCompatActivity(),
+    SearchCategoryDialogFragment.SearchCategoryDialogListener {
 
     private lateinit var binding: ActivitySearchBinding
     private val plantViewModel: PlantViewModel by viewModels {
         PlantViewModelFactory((application as PlantApplication).repository)
     }
 
-    var adapter: ListAdapter? = null
+    var adapter: SearchPlantAdapter? = null
     var allPlants: List<Plant> = ArrayList()
 
-    private var selectedCategories: List<PlantCategory> = ArrayList()
+    // Initialise selectedCategories, so all Categories are selected by default
+    private var selectedCategories: List<PlantCategory> = PlantCategory.values().toList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +37,7 @@ class SearchableActivity : AppCompatActivity(), SearchCategoryDialogFragment.Sea
         val view = binding.root
         setContentView(view)
 
-        val adapter = SearchPlantAdapter(application)
+        adapter = SearchPlantAdapter(application)
         binding.recyclerviewSearchedPlants.adapter = adapter
         binding.recyclerviewSearchedPlants.layoutManager = LinearLayoutManager(this)
 
@@ -44,7 +45,7 @@ class SearchableActivity : AppCompatActivity(), SearchCategoryDialogFragment.Sea
             plants.let {
                 // Set the plants list which should get searched
                 allPlants = it
-                executeSearch(adapter)
+                executeSearch()
             }
         }
 
@@ -70,37 +71,7 @@ class SearchableActivity : AppCompatActivity(), SearchCategoryDialogFragment.Sea
             override fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {
                 // An item was selected. You can retrieve the selected item using
                 // parent.getItemAtPosition(pos)
-                executeSearch(adapter)
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                // Another interface callback
-            }
-        }
-
-        //Setup Spinner for Category
-        val categorySpinner: Spinner = binding.searchCategorySpinner
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter(
-            this,
-            android.R.layout.simple_spinner_item,
-            PlantCategory.values().map { plantCategory ->
-                plantCategory.name.substring(0, 1).uppercase() + plantCategory.name.substring(1)
-                    .lowercase().replace('_', ' ')
-            }
-        ).also { categoryAdapter ->
-            // Specify the layout to use when the list of choices appears
-            categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
-            categorySpinner.adapter = categoryAdapter
-        }
-
-        // Register Listener for CategorySpinner
-        categorySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {
-                // An item was selected. You can retrieve the selected item using
-                // parent.getItemAtPosition(pos)
-                executeSearch(adapter)
+                executeSearch()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -111,12 +82,12 @@ class SearchableActivity : AppCompatActivity(), SearchCategoryDialogFragment.Sea
         // Register Listener for SearchView
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                executeSearch(adapter)
+                executeSearch()
                 return false
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                executeSearch(adapter)
+                executeSearch()
                 return false
             }
         })
@@ -125,14 +96,15 @@ class SearchableActivity : AppCompatActivity(), SearchCategoryDialogFragment.Sea
         //Register Listener for Dialog Button
         binding.testButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
-                val dialogFragment : SearchCategoryDialogFragment = SearchCategoryDialogFragment() //TODO: Add currentCategories as initialValue
+                val dialogFragment: SearchCategoryDialogFragment =
+                    SearchCategoryDialogFragment(selectedCategories)
                 dialogFragment.show(supportFragmentManager, "Search Category Dialog Fragment")
             }
 
         })
     }
 
-    fun executeSearch(searchPlantAdapter: SearchPlantAdapter) {
+    fun executeSearch() {
         val results = searchForPlantsInList()
         if (results.isEmpty()) {
             binding.recyclerviewSearchedPlants.visibility = View.GONE
@@ -141,7 +113,7 @@ class SearchableActivity : AppCompatActivity(), SearchCategoryDialogFragment.Sea
             binding.recyclerviewSearchedPlants.visibility = View.VISIBLE
             binding.noResultsFound.visibility = View.GONE
         }
-        searchPlantAdapter.submitList(
+        adapter!!.submitList(
             results
         )
         binding.numberResultsFound.text = getString(R.string.results_found, results.size)
@@ -152,27 +124,61 @@ class SearchableActivity : AppCompatActivity(), SearchCategoryDialogFragment.Sea
     ): List<Plant> {
         val query = binding.searchView.query.toString()
         val difficulty = binding.searchDifficultySpinner.selectedItem.toString()
-        val category = binding.searchCategorySpinner.selectedItem.toString()
         // Filter for the query, difficulty and category
         return allPlants.filter { plant: Plant ->
             plant.plantName.contains(
                 query,
                 ignoreCase = true
-            ) && (if (category != "") plant.plantCategory.toString().lowercase()
-                .contains(category.lowercase()) else true)
+            ) && //If no category is selected, it counts as all were selected
+                    (if (selectedCategories.isNotEmpty()) {
+                        containsAny(
+                            selectedCategories,
+                            plant.plantCategory
+                        )
+                    } else true)
                     && (if (difficulty != "") plant.difficulty.toString()
                 .lowercase() == difficulty.lowercase() else true)
         }
     }
 
-    override fun onDialogPositiveClick(dialog: DialogFragment, selectedItems: ArrayList<Int>) {
-        // Set current Categories
-        System.out.println("POSITIVE: " + selectedItems)
-        //TODO: Set selectedCategories
+    fun containsAny(
+        selectedCategories: List<PlantCategory>,
+        plantCategories: List<PlantCategory>
+    ): Boolean {
+        for (category in plantCategories) {
+            if (selectedCategories.contains(category)) {
+                return true
+            }
+        }
+        return false
     }
 
-    override fun onDialogNegativeClick(dialog: DialogFragment, selectedItems: ArrayList<Int>) {
+    override fun onDialogPositiveClick(
+        dialog: DialogFragment,
+        selectedItems: List<PlantCategory>
+    ) {
+        // Set current Categories
+        selectedCategories = selectedItems
+        executeSearch()
+    }
+
+    override fun onDialogNegativeClick(
+        dialog: DialogFragment,
+        selectedItems: List<PlantCategory>
+    ) {
         // Current Categories stay the same
-        System.out.println("NEGATIVE: " + selectedItems)
+    }
+
+    fun plantCategoriesToStringArray(): Array<String> {
+        return PlantCategory.values().map { plantCategory ->
+            plantCategory.name.substring(0, 1).uppercase() + plantCategory.name.substring(1)
+                .lowercase().replace('_', ' ')
+        }.toTypedArray()
+    }
+
+    fun stringListToPlantCategories(list: List<String>): List<PlantCategory> {
+        return list.map { plantCategory ->
+            PlantCategory.valueOf(plantCategory.uppercase().replace(' ', '_'))
+        }
     }
 }

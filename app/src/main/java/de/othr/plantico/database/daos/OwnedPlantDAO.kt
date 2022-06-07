@@ -9,6 +9,9 @@ interface OwnedPlantDAO {
     @Query("SELECT * FROM OwnedPlant ORDER BY id")
     fun getAllOwnedPlants(): Flow<List<OwnedPlant>>
 
+    @Query("SELECT * FROM OwnedPlant ORDER BY location ASC")
+    fun getAllByPlantSortByLocation(): Flow<List<OwnedPlant>>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertOwnedPlant(plant: OwnedPlant)
 

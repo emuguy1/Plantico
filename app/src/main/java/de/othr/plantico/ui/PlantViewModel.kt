@@ -42,6 +42,10 @@ class PlantViewModel(private val repository: Repository) : ViewModel() {
         return repository.getAllOwnedPlantByPlantID(plantID).asLiveData()
     }
 
+    fun getAllOwnedPlantSortedByPlantLocation(): LiveData<List<OwnedPlant>> {
+        return repository.getAllOwnedPlantSortByPlantLocation().asLiveData()
+    }
+
     fun getAllOwnedPlantSortedByWateringTime(): LiveData<List<OwnedPlant>> {
         return repository.getAllOwnedPlantSortedByWateringTime().asLiveData()
     }

@@ -43,4 +43,8 @@
     <string name="plant_watering_instructions">Watering Instructions:</string>
     <string name="plant_difficulty">Difficulty:</string>
     <string name="add_plant_button_text">Add Plant</string>
+    <string name="days_till_watering">Days till watering:</string>
+    <string name="age">Age:</string>
+    <string name="years_old">%d years old</string>
+    <string name="x_days_till_watering">%d days</string>
 </resources>

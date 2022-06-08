@@ -79,7 +79,7 @@
                 android:id="@+id/header_plant_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name:"
+                android:text="@string/plant_own_add_name"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/plant_name" />
 
@@ -96,7 +96,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:hint="New plant name"
+                    android:hint="@string/plant_own_hint_name"
                     android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -105,7 +105,7 @@
                 android:id="@+id/header_watering"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Watering cycle:"
+                android:text="@string/plant_own_add_watering"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/header_plant_location"
                 app:layout_constraintTop_toBottomOf="@+id/input_plant_name" />
@@ -135,7 +135,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="Days"
+                android:text="@string/plant_own_add_days"
                 app:layout_constraintBottom_toTopOf="@+id/header_plant_location"
                 app:layout_constraintStart_toEndOf="@id/input_watering"
                 app:layout_constraintTop_toBottomOf="@+id/input_plant_name" />
@@ -145,7 +145,7 @@
                 android:id="@+id/header_plant_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Location:"
+                android:text="@string/plant_location"
                 android:layout_marginTop="15dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/input_watering" />
@@ -154,7 +154,6 @@
                 android:id="@+id/input_plant_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Plant location"
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -163,7 +162,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:hint="Plant location"
+                    android:hint="@string/plant_own_location_hint"
                     android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -172,7 +171,7 @@
                 android:id="@+id/header_plant_birthday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Plant birthday:"
+                android:text="@string/plant_birthday"
                 android:layout_marginTop="15dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/input_plant_location" />
@@ -190,7 +189,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="dd.mm.yyyy"
+                    android:hint="@string/plant_own_date_hint"
                     android:inputType="date" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -204,7 +203,7 @@
                 android:layout_marginVertical="60dp"
                 app:layout_constraintEnd_toStartOf="@+id/button_save_plant"
                 app:layout_constraintTop_toBottomOf="@+id/input_plant_birthday"
-                android:text="Cancel"
+                android:text="@string/plant_own_add_cancel"
                 android:textColor="@color/error"
                 android:backgroundTint="@color/white"
                 app:strokeColor="@color/error"
@@ -220,7 +219,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginVertical="20dp"
                 app:layout_constraintTop_toBottomOf="@+id/input_plant_birthday"
-                android:text="Save"
+                android:text="@string/plant_own_add_save"
                 android:textColor="@color/primary"
                 android:backgroundTint="@color/white"
                 app:strokeColor="@color/primary"

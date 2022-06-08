@@ -1,4 +1,4 @@
-package de.othr.plantico.ownedPlant
+package de.othr.plantico.ui.ownedPlant
 
 import android.os.Bundle
 import android.view.View
@@ -127,6 +127,7 @@ class OwnedPlantActivity : AppCompatActivity() {
                     plantLastWateredText.text =
                         oPlant.lastWatered?.toDateString() ?: "No watering info available."
                     ownedPlantName.text = oPlant.plantName
+                    plantLocationText.text = oPlant.location
 
                     plantWateringCycleText.text = oPlant.customWateringCycle.toString() + " Days"
                 }

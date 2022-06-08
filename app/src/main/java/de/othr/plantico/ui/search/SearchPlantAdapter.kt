@@ -15,7 +15,7 @@ import de.othr.plantico.database.entities.PlantCategory
 import de.othr.plantico.database.entities.PlantDifficulty
 import de.othr.plantico.database.entities.WateringLevel
 import de.othr.plantico.databinding.ViewPlantItemSearchBinding
-import de.othr.plantico.ownedPlant.OwnedPlantActivity
+import de.othr.plantico.ui.ownedPlant.OwnedPlantActivity
 import de.othr.plantico.ui.plantDetails.PlantDetailActivity
 
 class SearchPlantAdapter(context: Context) :

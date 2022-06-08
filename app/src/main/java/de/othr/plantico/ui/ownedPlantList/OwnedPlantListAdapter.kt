@@ -19,7 +19,7 @@ import de.othr.plantico.database.entities.Plant
 import de.othr.plantico.database.entities.WateringLevel
 import de.othr.plantico.databinding.ViewOwnedPlantItemBinding
 import de.othr.plantico.nowUTC
-import de.othr.plantico.ownedPlant.OwnedPlantActivity
+import de.othr.plantico.ui.ownedPlant.OwnedPlantActivity
 import java.util.*
 
 

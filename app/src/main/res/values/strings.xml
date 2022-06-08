@@ -50,4 +50,5 @@
     <string name="add_watering_plant_text">ADD WATERING</string>
     <string name="plant_last_watered">Last time watered:</string>
     <string name="plant_birthday">Plant birthday:</string>
+    <string name="plant_location">Location:</string>
 </resources>

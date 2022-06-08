@@ -3,7 +3,6 @@ package de.othr.plantico
 import android.app.Activity
 import android.content.Intent
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import de.othr.plantico.ownedPlant.OwnedPlantActivity
 import de.othr.plantico.ui.homescreen.HomescreenActivity
 import de.othr.plantico.ui.ownedPlantList.ActivityOwnedPlants
 import de.othr.plantico.ui.search.SearchableActivity

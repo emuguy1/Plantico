@@ -15,8 +15,8 @@ import de.othr.plantico.database.entities.OwnedPlant
 import de.othr.plantico.database.entities.Plant
 import de.othr.plantico.database.entities.WateringLevel
 import de.othr.plantico.databinding.ViewWateringItemBinding
-import de.othr.plantico.ownedPlant.OwnedPlantActivity
 import de.othr.plantico.toPlanticoString
+import de.othr.plantico.ui.ownedPlant.OwnedPlantActivity
 
 class WateringAdapter(context: Context) :
     ListAdapter<OwnedPlant, WateringAdapter.WateringViewHolder>(OwnedPlantsComparator()) {

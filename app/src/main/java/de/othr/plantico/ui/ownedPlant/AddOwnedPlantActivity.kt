@@ -1,4 +1,4 @@
-package de.othr.plantico.ownedPlant
+package de.othr.plantico.ui.ownedPlant
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,7 +11,7 @@ import de.othr.plantico.database.entities.OwnedPlant
 import de.othr.plantico.database.entities.Plant
 import de.othr.plantico.databinding.ActivityOwnedPlantAddBinding
 import de.othr.plantico.parseStringToDate
-import de.othr.plantico.ui.homescreen.HomescreenActivity
+import de.othr.plantico.ui.ownedPlantList.ActivityOwnedPlants
 import de.othr.plantico.ui.plantDetails.PlantDetailActivity
 import java.util.*
 
@@ -68,7 +68,7 @@ class AddOwnedPlantActivity : AppCompatActivity() {
             val ownedPlant =
                 OwnedPlant(customName, plant!!.id, null, date, wateringCycle, location)
             plantViewModel.insertOwnedPlant(ownedPlant)
-            val intent = Intent(this, HomescreenActivity::class.java)
+            val intent = Intent(this, ActivityOwnedPlants::class.java)
             startActivity(intent)
         }
         binding.buttonCancel.setOnClickListener {

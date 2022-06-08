@@ -17,9 +17,9 @@ import de.othr.plantico.database.entities.Plant
 import de.othr.plantico.database.entities.PlantDifficulty
 import de.othr.plantico.database.entities.WateringLevel
 import de.othr.plantico.databinding.ActivityPlantDetailPageBinding
-import de.othr.plantico.ownedPlant.AddOwnedPlantActivity
-import de.othr.plantico.ownedPlant.OwnedPlantActivity
 import de.othr.plantico.setupMenuBinding
+import de.othr.plantico.ui.ownedPlant.AddOwnedPlantActivity
+import de.othr.plantico.ui.ownedPlant.OwnedPlantActivity
 
 class PlantDetailActivity : AppCompatActivity() {
 

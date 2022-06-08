@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import de.othr.plantico.R
 import de.othr.plantico.database.entities.Plant
 import de.othr.plantico.databinding.ViewPlantItemHomescreenBinding
-import de.othr.plantico.ownedPlant.OwnedPlantActivity
+import de.othr.plantico.ui.ownedPlant.OwnedPlantActivity
 import de.othr.plantico.ui.plantDetails.PlantDetailActivity
 
 class PlantAdapter : ListAdapter<Plant, PlantAdapter.PlantHistoryViewHolder>(PlantsComparator()) {

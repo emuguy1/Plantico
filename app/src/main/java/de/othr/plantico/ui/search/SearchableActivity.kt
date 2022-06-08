@@ -29,7 +29,7 @@ class SearchableActivity : AppCompatActivity(),
     var allPlants: List<Plant> = ArrayList()
 
     // Initialise selectedCategories, so all Categories are selected by default
-    private var selectedCategories: List<PlantCategory> = PlantCategory.values().toList()
+    var selectedCategories: List<PlantCategory> = PlantCategory.values().toList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -2,6 +2,7 @@ package de.othr.plantico.ui.search
 
 import androidx.test.core.app.launchActivity
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import de.othr.plantico.database.entities.PlantCategory
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -12,17 +13,21 @@ internal class SearchableActivityTest {
     fun searchForPlantsInList() {
         launchActivity<SearchableActivity>().use { scenario ->
             scenario.onActivity { activity ->
-                // Test search with full name of a plant
-                assertEquals(1, activity.searchForPlantsInList("Aloe Vera").size)
+                // Test search with a single category
+                activity.selectedCategories = listOf(PlantCategory.INDOOR)
+                assertEquals(6, activity.searchForPlantsInList().size)
 
-                // Test search with small Case
-                assertEquals(1, activity.searchForPlantsInList("aloe vera").size)
+                // Test search with multiple categories
+                activity.selectedCategories = listOf(PlantCategory.INDOOR, PlantCategory.DURABLE, PlantCategory.NON_HARDY)
+                assertEquals(9, activity.searchForPlantsInList().size)
 
-                // Test search with some characters of multiple plants
-                assertEquals(2, activity.searchForPlantsInList("era").size)
+                // Test search with all categories
+                activity.selectedCategories = PlantCategory.values().toList() // all values
+                assertEquals(10, activity.searchForPlantsInList().size)
 
-                // Test search with no results
-                assertEquals(0, activity.searchForPlantsInList("abcde").size)
+                // Test search with no categories
+                activity.selectedCategories = ArrayList()
+                assertEquals(10, activity.searchForPlantsInList().size)
             }
         }
     }

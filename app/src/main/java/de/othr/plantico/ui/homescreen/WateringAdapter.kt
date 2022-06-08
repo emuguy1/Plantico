@@ -10,15 +10,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import de.othr.plantico.R
+import de.othr.plantico.addDays
 import de.othr.plantico.database.entities.OwnedPlant
 import de.othr.plantico.databinding.ViewWateringItemBinding
-import de.othr.plantico.ui.PlantActivity
-import de.othr.plantico.addDays
+import de.othr.plantico.ownedPlant.OwnedPlantActivity
 import de.othr.plantico.toPlanticoString
-import java.util.*
 
-class WateringAdapter(context: Context) : ListAdapter<OwnedPlant, WateringAdapter.WateringViewHolder>(OwnedPlantsComparator()) {
-    private val con: Context  = context
+class WateringAdapter(context: Context) :
+    ListAdapter<OwnedPlant, WateringAdapter.WateringViewHolder>(OwnedPlantsComparator()) {
+    private val con: Context = context
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WateringViewHolder {
         val binding = ViewWateringItemBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -26,7 +26,7 @@ class WateringAdapter(context: Context) : ListAdapter<OwnedPlant, WateringAdapte
             false
         )
 
-        return WateringViewHolder(binding,con)
+        return WateringViewHolder(binding, con)
     }
 
     override fun onBindViewHolder(holder: WateringViewHolder, position: Int) {
@@ -45,22 +45,29 @@ class WateringAdapter(context: Context) : ListAdapter<OwnedPlant, WateringAdapte
 
         fun bind(plant: OwnedPlant) {
             //reset item to standard
-            itemBinding.wateringMedium.setImageDrawable(ContextCompat.getDrawable(con,R.drawable.ic_waterdropplett_empty_icon))
-            itemBinding.wateringHeavy.setImageDrawable(ContextCompat.getDrawable(con,R.drawable.ic_waterdropplett_empty_icon))
-            itemBinding.wateringPlantText.text= plant.plantName
+            itemBinding.wateringMedium.setImageDrawable(
+                ContextCompat.getDrawable(
+                    con,
+                    R.drawable.ic_waterdropplett_empty_icon
+                )
+            )
+            itemBinding.wateringHeavy.setImageDrawable(
+                ContextCompat.getDrawable(
+                    con,
+                    R.drawable.ic_waterdropplett_empty_icon
+                )
+            )
+            itemBinding.wateringPlantText.text = plant.plantName
             itemBinding.wateringLocationText.text = plant.location ?: "-"
             //TODO: Get Watering Level from Plant
             //TODO: Should already be eliminated in the query
-            if (plant.lastWatered != null){
+            if (plant.lastWatered != null) {
                 var wateringDate = plant.lastWatered
-                wateringDate = if(plant.customWateringCycle != null){
-                     wateringDate.addDays(plant.customWateringCycle)
+                if (wateringDate != null) {
+                    wateringDate = wateringDate.addDays(plant.customWateringCycle)
+                    itemBinding.wateringDateText.text = wateringDate.toPlanticoString()
+
                 }
-                //TODO: Get Watering cycle from the plant type
-                else{
-                    wateringDate.addDays(1)
-                }
-                itemBinding.wateringDateText.text = wateringDate.toPlanticoString()
             }
             itemBinding.wateringCard.setOnClickListener(this)
         }
@@ -69,9 +76,12 @@ class WateringAdapter(context: Context) : ListAdapter<OwnedPlant, WateringAdapte
             if (p0 != null) {
                 if (p0.id == R.id.watering_card) {
                     val context = p0.context
-                    val intent = Intent(context, PlantActivity::class.java).putExtra(
-                        PlantActivity.SELECTED_PLANT,
+                    val intent = Intent(context, OwnedPlantActivity::class.java).putExtra(
+                        OwnedPlantActivity.SELECTED_OWN_PLANT,
                         currentList[layoutPosition].id
+                    ).putExtra(
+                        OwnedPlantActivity.SELECTED_PLANT,
+                        currentList[layoutPosition].plantID
                     )
                     context.startActivity(intent)
                 }

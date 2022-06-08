@@ -15,8 +15,8 @@ interface OwnedPlantDAO {
     @Query("DELETE FROM OwnedPlant")
     suspend fun deleteAll()
 
-    @Query("SELECT * FROM OwnedPlant WHERE id=:ownedPlantID")
-    fun getOwnedPlantByID(ownedPlantID: Int): OwnedPlant
+    @Query("SELECT * FROM OwnedPlant WHERE id=:ownedPlantID LIMIT 1")
+    fun getOwnedPlantByID(ownedPlantID: Int): Flow<OwnedPlant>
 
     @Query("DELETE FROM OwnedPlant WHERE id=:ownedPlantID")
     suspend fun deleteOwnedPlantByID(ownedPlantID: Int)

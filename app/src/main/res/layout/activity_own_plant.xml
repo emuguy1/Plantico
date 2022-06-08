@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.PlantActivity">
+    tools:context="de.othr.plantico.ownedPlant.OwnedPlantActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_homescreen"
@@ -23,7 +23,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_plantico_text"/>
+            android:src="@drawable/ic_plantico_text" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -38,8 +38,7 @@
         android:textSize="15sp"
         android:textColor="@color/grey"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_homescreen"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_homescreen" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -54,7 +53,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/bottom_nav_menu" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

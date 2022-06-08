@@ -1,4 +1,4 @@
-package de.othr.plantico.ui.ownedPlant
+package de.othr.plantico.ownedPlant
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,7 +9,7 @@ import de.othr.plantico.PlantViewModelFactory
 import de.othr.plantico.database.PlantApplication
 import de.othr.plantico.database.entities.OwnedPlant
 import de.othr.plantico.database.entities.Plant
-import de.othr.plantico.databinding.ActivityOwnedPlantDetailBinding
+import de.othr.plantico.databinding.ActivityOwnedPlantAddBinding
 import de.othr.plantico.parseStringToDate
 import de.othr.plantico.ui.homescreen.HomescreenActivity
 import de.othr.plantico.ui.plantDetails.PlantDetailActivity
@@ -18,14 +18,14 @@ import java.util.*
 class AddOwnedPlantActivity : AppCompatActivity() {
     private var plantID = 0
     private val plantList = ArrayList<Plant>()
-    private lateinit var binding: ActivityOwnedPlantDetailBinding
+    private lateinit var binding: ActivityOwnedPlantAddBinding
     private val plantViewModel: PlantViewModel by viewModels {
         PlantViewModelFactory((application as PlantApplication).repository)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityOwnedPlantDetailBinding.inflate(layoutInflater)
+        binding = ActivityOwnedPlantAddBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
@@ -54,8 +54,12 @@ class AddOwnedPlantActivity : AppCompatActivity() {
             }
         }
         binding.buttonSavePlant.setOnClickListener {
+
             var wateringCycle = plant!!.wateringCycleDays
             val customName = binding.inputPlantName.editText?.text.toString()
+            if (customName == "") {
+                return@setOnClickListener;
+            }
             val wateringCycleString = binding.inputWatering.editText?.text.toString()
             wateringCycleString.toIntOrNull()?.let { customCycle -> wateringCycle = customCycle }
             val location = binding.inputPlantLocation.editText?.text.toString()
@@ -65,6 +69,18 @@ class AddOwnedPlantActivity : AppCompatActivity() {
                 OwnedPlant(customName, plant!!.id, null, date, wateringCycle, location)
             plantViewModel.insertOwnedPlant(ownedPlant)
             val intent = Intent(this, HomescreenActivity::class.java)
+            startActivity(intent)
+        }
+        binding.buttonCancel.setOnClickListener {
+            val intent = plant?.let { it1 ->
+                Intent(
+                    this,
+                    PlantDetailActivity::class.java
+                ).putExtra(
+                    OwnedPlantActivity.SELECTED_PLANT,
+                    it1.id
+                )
+            }
             startActivity(intent)
         }
     }

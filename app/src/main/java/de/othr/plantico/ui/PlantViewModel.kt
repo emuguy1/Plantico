@@ -30,12 +30,12 @@ class PlantViewModel(private val repository: Repository) : ViewModel() {
     }
 
 
-    fun getPlantByID(plantID: Int): Plant {
-        return repository.getPlantByID(plantID)
+    fun getPlantByID(plantID: Int): LiveData<Plant> {
+        return repository.getPlantByID(plantID).asLiveData()
     }
 
-    fun getOwnedPlantByID(ownedPlantID: Int): OwnedPlant {
-        return repository.getOwnedPlantByID(ownedPlantID)
+    fun getOwnedPlantByID(ownedPlantID: Int): LiveData<OwnedPlant> {
+        return repository.getOwnedPlantByID(ownedPlantID).asLiveData()
     }
 
     fun getAllOwnedPlantByPlantID(plantID: Int): LiveData<List<OwnedPlant>> {

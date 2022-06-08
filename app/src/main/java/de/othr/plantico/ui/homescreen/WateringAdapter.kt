@@ -10,15 +10,18 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import de.othr.plantico.R
-import de.othr.plantico.addDays
 import de.othr.plantico.database.entities.OwnedPlant
 import de.othr.plantico.databinding.ViewWateringItemBinding
 import de.othr.plantico.ownedPlant.OwnedPlantActivity
+import de.othr.plantico.addDays
+import de.othr.plantico.database.entities.Plant
+import de.othr.plantico.database.entities.WateringLevel
 import de.othr.plantico.toPlanticoString
 
-class WateringAdapter(context: Context) :
-    ListAdapter<OwnedPlant, WateringAdapter.WateringViewHolder>(OwnedPlantsComparator()) {
-    private val con: Context = context
+class WateringAdapter(context: Context) : ListAdapter<OwnedPlant, WateringAdapter.WateringViewHolder>(OwnedPlantsComparator()) {
+    private val con: Context  = context
+    private lateinit var plantList: List<Plant>
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WateringViewHolder {
         val binding = ViewWateringItemBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -35,6 +38,11 @@ class WateringAdapter(context: Context) :
 
     }
 
+    fun addPlants(plants: List<Plant>){
+        plantList = plants
+        notifyDataSetChanged()
+    }
+
 
     inner class WateringViewHolder(binding: ViewWateringItemBinding, context: Context) :
         RecyclerView.ViewHolder(
@@ -45,30 +53,48 @@ class WateringAdapter(context: Context) :
 
         fun bind(plant: OwnedPlant) {
             //reset item to standard
-            itemBinding.wateringMedium.setImageDrawable(
-                ContextCompat.getDrawable(
-                    con,
-                    R.drawable.ic_waterdropplett_empty_icon
-                )
-            )
-            itemBinding.wateringHeavy.setImageDrawable(
-                ContextCompat.getDrawable(
-                    con,
-                    R.drawable.ic_waterdropplett_empty_icon
-                )
-            )
-            itemBinding.wateringPlantText.text = plant.plantName
-            itemBinding.wateringLocationText.text = plant.location ?: "-"
-            //TODO: Get Watering Level from Plant
-            //TODO: Should already be eliminated in the query
-            if (plant.lastWatered != null) {
-                var wateringDate = plant.lastWatered
-                if (wateringDate != null) {
-                    wateringDate = wateringDate.addDays(plant.customWateringCycle)
-                    itemBinding.wateringDateText.text = wateringDate.toPlanticoString()
 
+            itemBinding.wateringHeavy.setImageDrawable(ContextCompat.getDrawable(con,R.drawable.ic_waterdropplett_empty_icon))
+            itemBinding.wateringPlantText.text= plant.plantName
+            itemBinding.wateringLocationText.text = plant.location ?: "-"
+            if(plantList!=null){
+                var realPlant = plantList[plant.plantID]
+                //Watering
+                val waterdropplettFull = ContextCompat
+                    .getDrawable(con, R.drawable.ic_waterdropplett_full_icon)
+                val waterdropplettEmpty = ContextCompat
+                    .getDrawable(con, R.drawable.ic_waterdropplett_empty_icon)
+
+                when (realPlant.wateringLevel) {
+
+                    WateringLevel.LOW -> {
+                        itemBinding.wateringLight.setImageDrawable(waterdropplettFull)
+                        itemBinding.wateringMedium.setImageDrawable(waterdropplettEmpty)
+                        itemBinding.wateringHeavy.setImageDrawable(waterdropplettEmpty)
+                    }
+                    WateringLevel.MEDIUM -> {
+                        itemBinding.wateringLight.setImageDrawable(waterdropplettFull)
+                        itemBinding.wateringMedium.setImageDrawable(waterdropplettFull)
+                        itemBinding.wateringHeavy.setImageDrawable(waterdropplettEmpty)
+                    }
+                    WateringLevel.HIGH -> {
+                        itemBinding.wateringLight.setImageDrawable(waterdropplettFull)
+                        itemBinding.wateringMedium.setImageDrawable(waterdropplettFull)
+                        itemBinding.wateringHeavy.setImageDrawable(waterdropplettFull)
+                    }
+                }
+                if (plant.lastWatered != null){
+                    var wateringDate = plant.lastWatered
+                    wateringDate = if(plant.customWateringCycle != null){
+                        wateringDate.addDays(plant.customWateringCycle)
+                    }
+                    else{
+                        wateringDate.addDays(realPlant.wateringCycleDays)
+                    }
+                    itemBinding.wateringDateText.text = wateringDate.toPlanticoString()
                 }
             }
+
             itemBinding.wateringCard.setOnClickListener(this)
         }
 

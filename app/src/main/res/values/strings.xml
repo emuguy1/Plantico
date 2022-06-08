@@ -19,6 +19,7 @@
     <string name="plant_genus_header">Genus:</string>
     <string name="plant_subfamily_header">Subfamily:</string>
     <string name="plant_family_header">Family:</string>
+    <string name="plant_category_header">Category:</string>
     <string name="view_all"><u>View All</u></string>
     <string name="homescreen_upcomming_waterings">Upcoming Waterings</string>
     <string name="homescreen_last_visited_plants">Last visited plants</string>
@@ -42,6 +43,10 @@
     <string name="plant_watering_instructions">Watering Instructions:</string>
     <string name="plant_difficulty">Difficulty:</string>
     <string name="add_plant_button_text">Add Plant</string>
+    <string name="days_till_watering">Days till watering:</string>
+    <string name="age">Age:</string>
+    <string name="years_old">%d years old</string>
+    <string name="x_days_till_watering">%d days</string>
     <string name="add_watering_plant_text">ADD WATERING</string>
     <string name="plant_last_watered">Last time watered:</string>
     <string name="plant_birthday">Plant birthday:</string>

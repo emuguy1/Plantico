@@ -59,7 +59,7 @@ class PlantDetailActivity : AppCompatActivity() {
         )
         binding.categoriesItemList.adapter = adapter
 
-        var plant: Plant? = null
+        var plant: Plant?
         plantViewModel.allPlants.observe(this) { plants ->
             // Update the cached copy of the words in the adapter.
             plants.let {

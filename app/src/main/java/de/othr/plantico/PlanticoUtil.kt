@@ -5,6 +5,7 @@ import android.content.Intent
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import de.othr.plantico.ownedPlant.OwnedPlantActivity
 import de.othr.plantico.ui.homescreen.HomescreenActivity
+import de.othr.plantico.ui.ownedPlantList.ActivityOwnedPlants
 import de.othr.plantico.ui.search.SearchableActivity
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
@@ -66,7 +67,7 @@ fun BottomNavigationView.setupMenuBinding(id: Int, activity: Activity) {
             }
 
             R.id.action_plant -> {
-                val intent = Intent(activity, OwnedPlantActivity::class.java)
+                val intent = Intent(activity, ActivityOwnedPlants::class.java)
                 activity.startActivity(intent)
                 true
             }

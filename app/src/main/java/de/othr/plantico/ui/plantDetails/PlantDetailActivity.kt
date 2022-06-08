@@ -27,6 +27,8 @@ class PlantDetailActivity : AppCompatActivity() {
     private var plantID = 0
     private val plantList = ArrayList<Plant>()
     private lateinit var binding: ActivityPlantDetailPageBinding
+    private var plant: Plant? = null
+
     private val plantViewModel: PlantViewModel by viewModels {
         PlantViewModelFactory((application as PlantApplication).repository)
     }
@@ -59,7 +61,6 @@ class PlantDetailActivity : AppCompatActivity() {
         )
         binding.categoriesItemList.adapter = adapter
 
-        var plant: Plant?
         plantViewModel.allPlants.observe(this) { plants ->
             // Update the cached copy of the words in the adapter.
             plants.let {

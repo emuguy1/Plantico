@@ -19,8 +19,7 @@ import de.othr.plantico.database.entities.Plant
 import de.othr.plantico.database.entities.WateringLevel
 import de.othr.plantico.databinding.ViewOwnedPlantItemBinding
 import de.othr.plantico.nowUTC
-import de.othr.plantico.ui.PlantActivity
-import java.time.LocalDate
+import de.othr.plantico.ownedPlant.OwnedPlantActivity
 import java.util.*
 
 
@@ -98,15 +97,18 @@ class OwnedPlantListAdapter(context: Context) :
 
 
                     var wateringDate = plant.lastWatered
-                    wateringDate = wateringDate.addDays(plant.customWateringCycle)
+                    if (wateringDate != null) {
+                        wateringDate = wateringDate.addDays(plant.customWateringCycle)
+                        val diff: Long = wateringDate.time - currentDate.time
+                        val days = (((diff / 1000) / 60) / 60) / 24
+                        itemBinding.plantWateringTimeText.text = "$days days"
 
-                    val diff: Long = wateringDate.time - currentDate.time
-                    val days = (((diff / 1000) / 60) / 60) / 24
-                    itemBinding.plantWateringTimeText.text = "$days days"
+                    }
+
 
                 }
 
-                if(plant.birthday != null){
+                if (plant.birthday != null) {
                     val currentDate = Date().nowUTC()
 
                     val diff: Long = currentDate.time - plant.birthday.time
@@ -116,14 +118,13 @@ class OwnedPlantListAdapter(context: Context) :
                     val days = hours / 24
                     val years = days / 365
 
-                    val ageText = if(years>0){
+                    val ageText = if (years > 0) {
                         "$years years old"
-                    }else{
+                    } else {
                         "$days days old"
                     }
                     itemBinding.plantAgeText.text = ageText
-                }
-                else{
+                } else {
                     itemBinding.plantAgeText.text = "-"
                 }
             }
@@ -135,9 +136,12 @@ class OwnedPlantListAdapter(context: Context) :
             if (p0 != null) {
                 if (p0.id == R.id.plant_card) {
                     val context = p0.context
-                    val intent = Intent(context, PlantActivity::class.java).putExtra(
-                        PlantActivity.SELECTED_PLANT,
+                    val intent = Intent(context, OwnedPlantActivity::class.java).putExtra(
+                        OwnedPlantActivity.SELECTED_OWN_PLANT,
                         currentList[layoutPosition].id
+                    ).putExtra(
+                        OwnedPlantActivity.SELECTED_PLANT,
+                        currentList[layoutPosition].plantID
                     )
                     context.startActivity(intent)
                 }

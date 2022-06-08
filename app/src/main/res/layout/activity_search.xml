@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_homescreen"
-        android:background="@color/primary"
-        app:titleTextColor="@color/white"
-        android:gravity="center"
         style="@style/Theme.Design.NoActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        app:titleTextColor="@color/white">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_plantico_text"/>
+            android:src="@drawable/ic_plantico_text" />
 
 
     </androidx.appcompat.widget.Toolbar>
@@ -55,13 +55,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_searched_plants"
-        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="15dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,9 +111,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="20dp"
+        android:gravity="end"
+        android:textAlignment="gravity"
         app:layout_constraintBottom_toBottomOf="@+id/search_difficulty"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/search_view"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/search_difficulty"
         app:layout_constraintTop_toTopOf="@+id/search_difficulty" />
@@ -134,7 +135,7 @@
         android:layout_marginStart="8dp"
         android:text="SELECT CATEGORY"
         app:layout_constraintBottom_toBottomOf="@+id/search_category"
-        app:layout_constraintEnd_toEndOf="@+id/search_difficulty_spinner"
+        app:layout_constraintEnd_toEndOf="@+id/search_view"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/search_category"
         app:layout_constraintTop_toTopOf="@+id/search_category" />

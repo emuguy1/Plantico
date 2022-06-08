@@ -51,14 +51,15 @@ class SearchableActivity : AppCompatActivity(),
 
         //Setup Spinner for Difficulty
         val difficultySpinner: Spinner = binding.searchDifficultySpinner
-        // Create an ArrayAdapter using the string array and a default spinner layout
+        // Create Array with spinner items
+        val difficultyList: ArrayList<String> = ArrayList<String>()
+        difficultyList.add("All")
+        difficultyList.addAll(plantDifficultiesToStringArray())
+        // Create an ArrayAdapter a default spinner layout
         ArrayAdapter(
             this,
             android.R.layout.simple_spinner_item,
-            PlantDifficulty.values().map { plantDifficulty ->
-                plantDifficulty.name.substring(0, 1).uppercase() + plantDifficulty.name.substring(1)
-                    .lowercase()
-            }
+            difficultyList
         ).also { difficultyAdapter ->
             // Specify the layout to use when the list of choices appears
             difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -136,7 +137,7 @@ class SearchableActivity : AppCompatActivity(),
                             plant.plantCategory
                         )
                     } else true)
-                    && (if (difficulty != "") plant.difficulty.toString()
+                    && (if (difficulty != "All") plant.difficulty.toString()
                 .lowercase() == difficulty.lowercase() else true)
         }
     }
@@ -169,16 +170,10 @@ class SearchableActivity : AppCompatActivity(),
         // Current Categories stay the same
     }
 
-    fun plantCategoriesToStringArray(): Array<String> {
-        return PlantCategory.values().map { plantCategory ->
-            plantCategory.name.substring(0, 1).uppercase() + plantCategory.name.substring(1)
+    private fun plantDifficultiesToStringArray(): Array<String> {
+        return PlantDifficulty.values().map { plantDifficulty ->
+            plantDifficulty.name.substring(0, 1).uppercase() + plantDifficulty.name.substring(1)
                 .lowercase().replace('_', ' ')
         }.toTypedArray()
-    }
-
-    fun stringListToPlantCategories(list: List<String>): List<PlantCategory> {
-        return list.map { plantCategory ->
-            PlantCategory.valueOf(plantCategory.uppercase().replace(' ', '_'))
-        }
     }
 }

@@ -25,8 +25,10 @@ class SearchCategoryDialogFragment(initialItems: List<PlantCategory>) : DialogFr
             listener = context as SearchCategoryDialogListener
         } catch (e: ClassCastException) {
             // The activity doesn't implement the interface, throw exception
-            throw ClassCastException((context.toString() +
-                    " must implement SearchCategoryDialogListener"))
+            throw ClassCastException(
+                (context.toString() +
+                        " must implement SearchCategoryDialogListener")
+            )
         }
 
         return activity?.let {
@@ -36,7 +38,8 @@ class SearchCategoryDialogFragment(initialItems: List<PlantCategory>) : DialogFr
                 // Specify the list array, the items to be selected by default (null for none),
                 // and the listener through which to receive callbacks when items are selected
                 .setMultiChoiceItems(
-                    plantCategoriesToStringList().toTypedArray(), initialCategoryConfig().toBooleanArray(),
+                    plantCategoriesToStringList().toTypedArray(),
+                    initialCategoryConfig().toBooleanArray(),
                     DialogInterface.OnMultiChoiceClickListener { dialog, which, isChecked ->
                         if (isChecked) {
                             // If the user checked the item, add it to the selected items
@@ -63,19 +66,19 @@ class SearchCategoryDialogFragment(initialItems: List<PlantCategory>) : DialogFr
         } ?: throw IllegalStateException("Activity cannot be null")
     }
 
-    fun plantCategoriesToStringList(): List<String> {
+    private fun plantCategoriesToStringList(): List<String> {
         return PlantCategory.values().map { plantCategory ->
             plantCategory.name.substring(0, 1).uppercase() + plantCategory.name.substring(1)
                 .lowercase().replace('_', ' ')
         }
     }
 
-    fun initialCategoryConfig() : List<Boolean> {
+    private fun initialCategoryConfig(): List<Boolean> {
         val initialBoolList = PlantCategory.values().map { plantCategory ->
             selectedItemsAsCategory.contains(plantCategory)
         }
-        for(plantCategory in selectedItemsAsCategory) {
-            if(selectedItemsAsCategory.contains(plantCategory)) {
+        for (plantCategory in selectedItemsAsCategory) {
+            if (selectedItemsAsCategory.contains(plantCategory)) {
                 selectedItems.add(plantCategory.ordinal)
             }
         }
@@ -83,9 +86,9 @@ class SearchCategoryDialogFragment(initialItems: List<PlantCategory>) : DialogFr
         return initialBoolList
     }
 
-    fun mapSelectedItemsToCategories(): List<PlantCategory> {
+    private fun mapSelectedItemsToCategories(): List<PlantCategory> {
         return selectedItems.map { item ->
-            PlantCategory.values().get(item)
+            PlantCategory.values()[item]
         }
     }
 }

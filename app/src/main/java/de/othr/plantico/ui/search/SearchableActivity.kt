@@ -1,5 +1,6 @@
 package de.othr.plantico.ui.search
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
@@ -16,6 +17,9 @@ import de.othr.plantico.database.entities.PlantCategory
 import de.othr.plantico.database.entities.PlantDifficulty
 import de.othr.plantico.databinding.ActivitySearchBinding
 import de.othr.plantico.setupMenuBinding
+import de.othr.plantico.ui.ownedPlant.AddOwnedPlantActivity
+import de.othr.plantico.ui.ownedPlant.OwnedPlantActivity
+import de.othr.plantico.ui.plantDetails.PlantDetailActivity
 
 class SearchableActivity : AppCompatActivity(),
     SearchCategoryDialogFragment.SearchCategoryDialogListener {
@@ -27,6 +31,7 @@ class SearchableActivity : AppCompatActivity(),
 
     var adapter: SearchPlantAdapter? = null
     var allPlants: List<Plant> = ArrayList()
+    private var plant: Plant? = null
 
     // Initialise selectedCategories, so all Categories are selected by default
     var selectedCategories: List<PlantCategory> = PlantCategory.values().toList()
@@ -45,6 +50,7 @@ class SearchableActivity : AppCompatActivity(),
             plants.let {
                 // Set the plants list which should get searched
                 allPlants = it
+                plant = it.firstOrNull()
                 executeSearch()
             }
         }
@@ -103,6 +109,19 @@ class SearchableActivity : AppCompatActivity(),
             }
 
         })
+        binding.cameraButton.setOnClickListener {
+            openDetailPage()
+        }
+    }
+
+    private fun openDetailPage(){
+        if(plant != null){
+            val intent = Intent(this, PlantDetailActivity::class.java).putExtra(
+                OwnedPlantActivity.SELECTED_PLANT,
+                plant!!.id
+            )
+            this.startActivity(intent)
+        }
     }
 
     fun executeSearch() {

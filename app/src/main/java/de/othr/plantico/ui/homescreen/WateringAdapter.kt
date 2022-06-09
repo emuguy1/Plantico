@@ -21,7 +21,7 @@ import de.othr.plantico.ui.ownedPlant.OwnedPlantActivity
 class WateringAdapter(context: Context) :
     ListAdapter<OwnedPlant, WateringAdapter.WateringViewHolder>(OwnedPlantsComparator()) {
     private val con: Context = context
-    private lateinit var plantList: List<Plant>
+    private var plantList: List<Plant>? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WateringViewHolder {
         val binding = ViewWateringItemBinding.inflate(
@@ -64,7 +64,7 @@ class WateringAdapter(context: Context) :
             itemBinding.wateringPlantText.text = plant.plantName
             itemBinding.wateringLocationText.text = plant.location ?: "-"
             if (plantList != null) {
-                var realPlant = plantList[plant.plantID]
+                var realPlant = plantList!![plant.plantID]
                 //Watering
                 val waterdropplettFull = ContextCompat
                     .getDrawable(con, R.drawable.ic_waterdropplett_full_icon)

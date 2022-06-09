@@ -1,5 +1,6 @@
 package de.othr.plantico.ui.plantDetails
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -17,7 +18,8 @@ import de.othr.plantico.database.entities.PlantDifficulty
 import de.othr.plantico.database.entities.WateringLevel
 import de.othr.plantico.databinding.ActivityPlantDetailPageBinding
 import de.othr.plantico.setupMenuBinding
-import de.othr.plantico.ui.PlantActivity
+import de.othr.plantico.ui.ownedPlant.AddOwnedPlantActivity
+import de.othr.plantico.ui.ownedPlant.OwnedPlantActivity
 
 class PlantDetailActivity : AppCompatActivity() {
 
@@ -25,6 +27,8 @@ class PlantDetailActivity : AppCompatActivity() {
     private var plantID = 0
     private val plantList = ArrayList<Plant>()
     private lateinit var binding: ActivityPlantDetailPageBinding
+    private var plant: Plant? = null
+
     private val plantViewModel: PlantViewModel by viewModels {
         PlantViewModelFactory((application as PlantApplication).repository)
     }
@@ -41,7 +45,7 @@ class PlantDetailActivity : AppCompatActivity() {
 
         val bundle = savedInstanceState ?: intent.extras
         if (bundle != null) {
-            plantID = bundle.getInt(PlantActivity.SELECTED_PLANT)
+            plantID = bundle.getInt(OwnedPlantActivity.SELECTED_PLANT)
 
         }
 
@@ -57,7 +61,6 @@ class PlantDetailActivity : AppCompatActivity() {
         )
         binding.categoriesItemList.adapter = adapter
 
-        var plant: Plant?
         plantViewModel.allPlants.observe(this) { plants ->
             // Update the cached copy of the words in the adapter.
             plants.let {
@@ -126,7 +129,22 @@ class PlantDetailActivity : AppCompatActivity() {
                 }
             }
         }
+
+        binding.addPlantButton.setOnClickListener {
+            val intent = Intent(this, AddOwnedPlantActivity::class.java).putExtra(
+                SELECTED_ADD_PLANT,
+                plant!!.id
+            )
+            startActivity(intent)
+        }
         binding.bottomNavigation.setupMenuBinding(R.id.action_home, this)
+
+
+    }
+
+    companion object {
+        const val SELECTED_ADD_PLANT = "selected_add_plant"
+
     }
 
 }

@@ -35,11 +35,11 @@ class Repository(private val plantDAO: PlantDAO, private val ownedPlantDAO: Owne
         ownedPlantDAO.updateOwnedPlant(ownedPlant)
     }
 
-    fun getPlantByID(plantID: Int): Plant {
+    fun getPlantByID(plantID: Int): Flow<Plant> {
         return plantDAO.getPlantByID(plantID)
     }
 
-    fun getOwnedPlantByID(ownedPlantID: Int): OwnedPlant {
+    fun getOwnedPlantByID(ownedPlantID: Int): Flow<OwnedPlant> {
         return ownedPlantDAO.getOwnedPlantByID(ownedPlantID)
     }
 

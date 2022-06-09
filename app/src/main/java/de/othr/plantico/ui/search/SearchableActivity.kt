@@ -95,7 +95,7 @@ class SearchableActivity : AppCompatActivity(),
         binding.bottomNavigation.setupMenuBinding(R.id.action_search, this)
 
         //Register Listener for Dialog Button
-        binding.testButton.setOnClickListener(object : View.OnClickListener {
+        binding.categorySelectButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
                 val dialogFragment: SearchCategoryDialogFragment =
                     SearchCategoryDialogFragment(selectedCategories)

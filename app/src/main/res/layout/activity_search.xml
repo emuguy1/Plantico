@@ -102,7 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Difficulty"
+        android:text="@string/search_difficulty"
         app:layout_constraintStart_toStartOf="@+id/search_view"
         app:layout_constraintTop_toBottomOf="@+id/search_view" />
 
@@ -124,16 +124,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Category"
+        android:text="@string/search_category"
         app:layout_constraintStart_toStartOf="@+id/search_difficulty"
         app:layout_constraintTop_toBottomOf="@+id/search_difficulty" />
 
     <Button
-        android:id="@+id/test_button"
+        android:id="@+id/category_select_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="SELECT CATEGORY"
+        android:text="@string/search_category_select"
         app:layout_constraintBottom_toBottomOf="@+id/search_category"
         app:layout_constraintEnd_toEndOf="@+id/search_view"
         app:layout_constraintHorizontal_bias="1.0"

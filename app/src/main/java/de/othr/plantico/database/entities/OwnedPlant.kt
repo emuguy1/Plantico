@@ -19,7 +19,7 @@ import java.util.*
 data class OwnedPlant(
     val plantName: String,
     val plantID: Int,
-    val lastWatered: Date,
+    var lastWatered: Date?,
     val birthday: Date?,
     var customWateringCycle: Int,
     val location: String?

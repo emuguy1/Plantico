@@ -15,7 +15,8 @@ import de.othr.plantico.database.entities.PlantCategory
 import de.othr.plantico.database.entities.PlantDifficulty
 import de.othr.plantico.database.entities.WateringLevel
 import de.othr.plantico.databinding.ViewPlantItemSearchBinding
-import de.othr.plantico.ui.PlantActivity
+import de.othr.plantico.ui.ownedPlant.OwnedPlantActivity
+import de.othr.plantico.ui.plantDetails.PlantDetailActivity
 
 class SearchPlantAdapter(context: Context) :
     ListAdapter<Plant, SearchPlantAdapter.SearchPlantHistoryViewHolder>(SearchPlantsComparator()) {
@@ -154,8 +155,8 @@ class SearchPlantAdapter(context: Context) :
             if (p0 != null) {
                 if (p0.id == R.id.plant_card) {
                     val context = p0.context
-                    val intent = Intent(context, PlantActivity::class.java).putExtra(
-                        PlantActivity.SELECTED_PLANT,
+                    val intent = Intent(context, PlantDetailActivity::class.java).putExtra(
+                        OwnedPlantActivity.SELECTED_PLANT,
                         currentList[layoutPosition].id
                     )
                     context.startActivity(intent)

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import de.othr.plantico.R
 import de.othr.plantico.database.entities.Plant
 import de.othr.plantico.databinding.ViewPlantItemHomescreenBinding
-import de.othr.plantico.ui.PlantActivity
+import de.othr.plantico.ui.ownedPlant.OwnedPlantActivity
 import de.othr.plantico.ui.plantDetails.PlantDetailActivity
 
 class PlantAdapter : ListAdapter<Plant, PlantAdapter.PlantHistoryViewHolder>(PlantsComparator()) {
@@ -48,11 +48,11 @@ class PlantAdapter : ListAdapter<Plant, PlantAdapter.PlantHistoryViewHolder>(Pla
             itemBinding.plantSubfamilyText.text = plant.subfamily
             itemBinding.plantGenusText.text = plant.genus
             //1 equals PlantDifficulty.INTERMEDIATE
-            if(plant.difficulty.ordinal >= 1){
+            if (plant.difficulty.ordinal >= 1) {
                 itemBinding.plantDifficultyMedium.visibility = View.VISIBLE
             }
             //2 equals PlantDifficulty.ADVANCED
-            if(plant.difficulty.ordinal >= 2){
+            if (plant.difficulty.ordinal >= 2) {
                 itemBinding.plantDifficultyHard.visibility = View.VISIBLE
             }
             itemBinding.plantCard.setOnClickListener(this)
@@ -63,7 +63,7 @@ class PlantAdapter : ListAdapter<Plant, PlantAdapter.PlantHistoryViewHolder>(Pla
                 if (p0.id == R.id.plant_card) {
                     val context = p0.context
                     val intent = Intent(context, PlantDetailActivity::class.java).putExtra(
-                        PlantActivity.SELECTED_PLANT,
+                        OwnedPlantActivity.SELECTED_PLANT,
                         currentList[layoutPosition].id
                     )
                     context.startActivity(intent)

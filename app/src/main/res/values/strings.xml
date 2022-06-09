@@ -47,4 +47,16 @@
     <string name="age">Age:</string>
     <string name="years_old">%d years old</string>
     <string name="x_days_till_watering">%d days</string>
+    <string name="add_watering_plant_text">ADD WATERING</string>
+    <string name="plant_last_watered">Last time watered:</string>
+    <string name="plant_birthday">Plant birthday:</string>
+    <string name="plant_location">Location:</string>
+    <string name="plant_own_add_name">Name:</string>
+    <string name="plant_own_hint_name">New plant name</string>
+    <string name="plant_own_add_watering">Watering cycle:</string>
+    <string name="plant_own_add_days">Days</string>
+    <string name="plant_own_location_hint">Plant location</string>
+    <string name="plant_own_date_hint">dd.mm.yyyy</string>
+    <string name="plant_own_add_cancel">Cancel</string>
+    <string name="plant_own_add_save">Save</string>
 </resources>

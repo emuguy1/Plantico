@@ -26,7 +26,19 @@
             android:src="@drawable/ic_plantico_text" />
 
 
+
     </androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/camera_button"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_camera"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <SearchView
         android:id="@+id/search_view"

@@ -3,23 +3,51 @@
     package="de.othr.plantico">
 
     <application
+        android:name=".database.PlantApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_starticon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_starticon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Plantico">
         <activity
-            android:name=".MainActivity"
+            android:name="de.othr.plantico.ui.ownedPlant.OwnedPlantActivity"
+            android:exported="false"
+            android:label="@string/title_activity_plant"
+            android:theme="@style/Theme.Plantico.NoActionBar" />
+        <activity
+            android:name=".ui.homescreen.HomescreenActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Plantico.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.search.SearchableActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Plantico.NoActionBar" />
+        <activity
+            android:name=".ui.plantDetails.PlantDetailActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Plantico.NoActionBar"></activity>
+        <activity
+            android:name=".ui.ownedPlantList.ActivityOwnedPlants"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Plantico.NoActionBar"></activity>
+        android:theme="@style/Theme.Plantico.NoActionBar" />
+        <activity
+            android:name="de.othr.plantico.ui.ownedPlant.AddOwnedPlantActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Plantico.NoActionBar" />
+
+
     </application>
 
 </manifest>

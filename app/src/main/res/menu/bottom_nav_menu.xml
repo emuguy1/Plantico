@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_icon"
+        android:title="@string/Home"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_plant"
+        android:enabled="true"
+        android:icon="@drawable/ic_plant_icon"
+        android:title="@string/Plants"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_search"
+        android:enabled="true"
+        android:icon="@drawable/ic_search_icon"
+        android:title="@string/Search"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_user"
+        android:enabled="true"
+        android:icon="@drawable/ic_user_icon"
+        android:title="@string/Users"
+        app:showAsAction="ifRoom"/>
+
+</menu>
